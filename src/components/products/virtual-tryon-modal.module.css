@@ -1,0 +1,161 @@
+.tryOnActionRow {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.tryOnPillBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 24px;
+  border: 1px solid #1e1e1e;
+  border-radius: 999px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 8px 22px rgba(0, 0, 0, 0.24);
+  transition: transform var(--motion-feedback) ease, box-shadow var(--motion-feedback) ease, background-color var(--motion-feedback) ease;
+}
+
+.tryOnPillBtn::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -65%;
+  width: 55%;
+  background: linear-gradient(110deg, transparent 15%, rgba(255, 255, 255, 0.34) 50%, transparent 85%);
+  transform: skewX(-18deg);
+  pointer-events: none;
+  animation: tryOnPillSheen 3.2s ease-in-out infinite;
+}
+
+.tryOnPillIcon {
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+
+.tryOnPillArrow {
+  font-size: 14px;
+  line-height: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tryOnPillBtn:hover:not(:disabled) {
+    background: #0f0f0f;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.24),
+      0 10px 26px rgba(0, 0, 0, 0.32);
+  }
+}
+
+.tryOnPillBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.tryOnPillBtn:disabled::after {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes tryOnPillSheen {
+  0%,
+  20% {
+    left: -65%;
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  65% {
+    left: 120%;
+    opacity: 0.9;
+  }
+  100% {
+    left: 120%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tryOnPillBtn::after {
+    animation: none;
+    display: none;
+  }
+}
+
+.dialog { width: min(1680px, calc(100vw - 32px)); max-width: none; height: min(960px, 96dvh); max-height: 96dvh; padding: 0; margin: auto; border: 1px solid #e8e8e8; border-radius: 18px; background: #fff; color: #111; overflow: hidden; box-shadow: 0 24px 90px #0003; font-family: Arial, Helvetica, sans-serif; }
+.dialog::backdrop { background: #1717178a; backdrop-filter: blur(6px); }
+.shell { height: 100%; display: grid; grid-template-rows: 72px minmax(0, 1fr); }
+.topbar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; margin: 0 32px; border-bottom: 1px solid #e5e5e5; }
+.wordmark { font-size: 20px; font-weight: 700; letter-spacing: .24em; }
+.topbarTitle { font-size: 14px; font-weight: 600; letter-spacing: .12em; }
+.dialog .closeBtn { justify-self: end; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: #111; font: 300 32px/1 Arial, sans-serif; cursor: pointer; }
+.body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.content { position: relative; min-height: 100%; padding: 38px 36px 24px; isolation: isolate; }
+.editorialModel { position: absolute; z-index: -1; pointer-events: none; left: 0; bottom: 0; height: calc(100% - 90px); width: clamp(190px, 16vw, 265px); object-fit: contain; object-position: left bottom; mix-blend-mode: multiply; mask-image: linear-gradient(to right, #000 88%, transparent); }
+.hero { margin-left: 0; margin-bottom: 42px; text-align: center; }
+.dialog.dialog :is(h2, h3) { font-family: Arial, Helvetica, sans-serif !important; letter-spacing: -.035em !important; color: #0a0a0a; font-weight: 600; }
+.dialog .hero h2 { margin: 0; font-size: clamp(28px, 2.5vw, 38px); line-height: 1.18; }
+.hero p { margin-top: 13px; color: #818181; font-size: 14px; line-height: 1.7; }
+.workspace { display: grid; grid-template-columns: minmax(270px, 1fr) minmax(0, 2fr); gap: 32px; margin-left: clamp(190px, 16vw, 265px); align-items: start; }
+.controls { min-width: 0; padding-top: 44px; display: grid; gap: 28px; }
+.garmentRow { display: flex; align-items: center; gap: 18px; min-width: 0; min-height: 88px; color: #111; }
+.garmentThumb { width: 88px; height: 88px; object-fit: contain; background: #f4f4f4; border-radius: 16px; flex-shrink: 0; }
+.garmentRow strong { min-width: 0; overflow-wrap: anywhere; font: 600 14px/1.45 Arial, sans-serif; }
+.chevron { margin-left: auto; font: 300 32px/1 Arial, sans-serif; }
+.uploadBox { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; min-height: 238px; padding: 26px 18px; border: 1.5px dashed #d5d5d5; border-radius: 18px; background: #fff; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; }
+.uploadIcon { width: 43px; height: 43px; margin-bottom: 4px; }
+.uploadBox strong { max-width: 100%; font-size: 17px; font-weight: 600; line-height: 1.45; overflow-wrap: anywhere; }
+.uploadBox > span { font-size: 13px; color: #858585; line-height: 1.6; }
+.hiddenFile, .visuallyHidden { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+.uploadBox:focus-within { outline: 2px solid #111; outline-offset: 4px; }
+.uploadBox[data-disabled=true] { cursor: not-allowed; opacity: .6; }
+.actions { display: grid; gap: 8px; margin-top: 4px; }
+.dialog .primaryBtn { width: 100%; min-height: 58px; padding: 14px 18px; display: flex; align-items: center; justify-content: center; gap: 12px; border: 1px solid #111; border-radius: 14px; background: #0a0a0a; color: #fff; font: 600 16px/1.4 Arial, sans-serif; letter-spacing: normal; cursor: pointer; }
+.dialog .primaryBtn:disabled { background: #202020; color: #a8a8a8; cursor: not-allowed; }
+.dialog .changeBtn { min-height: 36px; border: 0; background: transparent; color: #666; text-decoration: underline; text-underline-offset: 4px; font-size: 13px; cursor: pointer; }
+.results { min-width: 0; border-left: 1px solid #e4e4e4; padding-left: 30px; }
+.compareGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.frameCard { min-width: 0; }
+.dialog .frameCard h3 { margin: 0 0 20px; font-size: 18px; line-height: 1.25; }
+.frameViewport { width: 100%; height: clamp(340px, 55dvh, 555px); position: relative; overflow: hidden; display: grid; place-items: center; background: linear-gradient(140deg, #f4f4f4, #f0f0f0); border-radius: 22px; }
+.frameImg { position: absolute; width: 100%; height: 100%; object-fit: contain; }
+.emptyFrame { display: grid; place-items: center; color: #acacac; }
+.emptyFrame svg { width: 68px; height: 76px; stroke: currentColor; stroke-width: 2.5; }
+.processingImage { opacity: .65; filter: saturate(.65); }
+.scanOverlay { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 39px, #1111110b 39px 40px), repeating-linear-gradient(90deg, transparent 0 39px, #1111110b 39px 40px); }
+.scanLine { position: absolute; width: 100%; height: 2px; top: 8%; background: #555; box-shadow: 0 0 18px 4px #3333; animation: scan 2.8s ease-in-out infinite alternate; }
+.processingCaption { position: absolute; bottom: 14px; left: 10px; right: 10px; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 10px 8px; border-radius: 30px; background: #ffffffed; font-size: 12px; color: #555; }
+.spinner { display: inline-block; width: 16px; height: 16px; border: 1.5px solid currentColor; border-right-color: transparent; border-radius: 50%; flex-shrink: 0; animation: spin .9s linear infinite; }
+.resultImage { animation: resultReveal .6s ease-out both; }
+.resultStatus { color: #8a8a8a; font-size: 11px; line-height: 1.6; margin-top: 12px; }
+.resultActions { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 12px; color: #777; font-size: 12px; }
+.resultActions a { min-height: 44px; display: inline-flex; align-items: center; padding: 10px 15px; background: #111; border-radius: 10px; color: white; }
+.errorBanner { color: #9a3024; font-size: 13px; line-height: 1.6; padding: 12px; border: 1px solid #ead1cc; border-radius: 10px; background: #fff6f4; }
+.tryOnActionRow { flex-wrap: wrap; gap: 6px 12px; }
+.unavailableNotice { width: 100%; font-size: 12px; text-align: right; color: #796650; }
+@keyframes scan { to { top: 89%; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes resultReveal { from { opacity: 0; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }
+@media (hover: hover) and (pointer: fine) { .uploadBox:hover:not([data-disabled=true]) { border-color: #888; background: #fcfcfc; } .garmentRow:hover .chevron { transform: translateX(3px); } .dialog .primaryBtn:hover:not(:disabled) { background: #2c2c2c; } }
+@media (max-width: 1250px) { .content { padding: 30px 26px 24px; } .workspace { margin-left: 170px; grid-template-columns: minmax(240px, .95fr) minmax(0, 1.65fr); gap: 24px; } .editorialModel { width: 200px; } .hero { margin-left: 0; margin-bottom: 30px; } .results { padding-left: 22px; } .compareGrid { gap: 14px; } .garmentThumb { width: 68px; height: 78px; } .garmentRow { gap: 12px; } .garmentRow strong { font-size: 14px; } .uploadBox { min-height: 220px; } .uploadBox strong { font-size: 16px; } .uploadBox > span { font-size: 12px; } .dialog .frameCard h3 { font-size: 17px; } }
+@media (max-width: 1000px) { .editorialModel { display: none; } .hero, .workspace { margin-left: 0; } .workspace { grid-template-columns: minmax(240px, .8fr) minmax(0, 1.4fr); } .hero p { font-size: 13px; } .frameViewport { height: clamp(320px, 51dvh, 500px); } }
+@media (max-width: 720px) { .dialog { width: calc(100vw - 16px); height: 96dvh; border-radius: 16px; } .shell { grid-template-rows: 58px minmax(0, 1fr); } .topbar { margin-inline: 18px; } .wordmark { font-size: 18px; } .topbarTitle { font-size: 12px; } .dialog .closeBtn { width: 40px; height: 44px; font-size: 28px; } .content { padding: 24px 18px; } .hero { margin-bottom: 24px; } .dialog .hero h2 { font-size: 25px; } .hero p { font-size: 13px; margin-top: 10px; } .workspace { grid-template-columns: minmax(0, 1fr); gap: 28px; } .controls { padding-top: 0; gap: 18px; } .garmentRow { min-height: 66px; } .garmentThumb { width: 66px; height: 66px; border-radius: 12px; } .uploadBox { min-height: 148px; padding: 18px 14px; gap: 9px; } .uploadIcon { width: 30px; height: 30px; margin: 0; } .uploadBox strong { font-size: 16px; } .dialog .primaryBtn { min-height: 50px; font-size: 15px; border-radius: 12px; } .results { padding-left: 0; border: 0; } .dialog .frameCard h3 { font-size: 15px; margin-bottom: 12px; } .frameViewport { height: 290px; border-radius: 16px; } .emptyFrame svg { width: 50px; height: 60px; } .processingCaption { font-size: 10px; gap: 5px; left: 5px; right: 5px; } }
+@media (max-width: 360px) { .topbar { margin-inline: 12px; } .topbarTitle { font-size: 10px; } .content { padding-inline: 12px; } .dialog .hero h2 { font-size: 23px; } .compareGrid { gap: 10px; } .dialog .frameCard h3 { font-size: 14px; } .frameViewport { height: 250px; } }
+@media (prefers-reduced-motion: reduce) { .dialog *, .dialog *::before, .dialog *::after { animation: none !important; transition: none !important; } }

@@ -1,0 +1,133 @@
+/* Charles UX Animation, adapted to AUREL's measured 200ms / 40ms reveal. */
+:root, ::backdrop {
+  --motion-feedback: 150ms;
+  --motion-press: 120ms;
+  --motion-popover-enter: 160ms;
+  --motion-popover-exit: 120ms;
+  --motion-modal-enter: 220ms;
+  --motion-modal-exit: 160ms;
+  --motion-drawer-enter: 280ms;
+  --motion-drawer-exit: 200ms;
+  --motion-reveal: 200ms;
+  --motion-stagger: 40ms;
+  --motion-section-stagger: 80ms;
+  --motion-move: 250ms;
+  --motion-work-spin: 800ms;
+  --motion-work-pulse: 1400ms;
+  --motion-work-redirect: 2000ms;
+  --motion-ease-enter: cubic-bezier(0.32, 0.72, 0, 1);
+  --motion-ease-exit: cubic-bezier(0.55, 0, 1, 0.45);
+  --motion-ease-move: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Defaults have zero specificity; individual controls retain their own design. */
+:where(button, a[role="button"], input[type="submit"]) {
+  transition: color var(--motion-feedback) ease, background-color var(--motion-feedback) ease,
+    border-color var(--motion-feedback) ease, opacity var(--motion-feedback) ease;
+}
+:where(button[aria-busy="true"]) { cursor: progress; }
+html:has(dialog[open]) { overflow: hidden; }
+
+/* Repeated keyboard selection and focus must never trail behind the keys. */
+:is(button, a, input, select, textarea, [role="option"], [role="tab"], [role="radio"]):focus-visible {
+  transition: none !important;
+}
+:where([role="tab"], [role="option"], [role="radio"], [aria-selected]) {
+  transition: none;
+}
+
+/* Native dialogs opt in only when beforetoggle + discrete transitions exist. */
+html[data-native-dialog-motion] dialog,
+html[data-native-dialog-motion] dialog::backdrop {
+  --layer-enter: var(--motion-modal-enter);
+  --layer-exit: var(--motion-modal-exit);
+}
+html[data-native-dialog-motion] dialog {
+  /* Leaving the top layer must not switch fixed → absolute mid-exit. */
+  position: fixed;
+  --layer-from: 0 8px;
+  --layer-scale: 0.97;
+  opacity: 0;
+  translate: var(--layer-from);
+  scale: var(--layer-scale);
+  pointer-events: none;
+  transition: opacity var(--layer-exit) var(--motion-ease-exit),
+    translate var(--layer-exit) var(--motion-ease-exit),
+    scale var(--layer-exit) var(--motion-ease-exit),
+    display var(--layer-exit) allow-discrete, overlay var(--layer-exit) allow-discrete;
+}
+html[data-native-dialog-motion] dialog[data-motion="sheet"],
+html[data-native-dialog-motion] dialog[data-motion="sheet"]::backdrop {
+  --layer-enter: var(--motion-drawer-enter);
+  --layer-exit: var(--motion-drawer-exit);
+  --layer-from: -100% 0;
+  --layer-scale: 1;
+}
+html[data-native-dialog-motion] dialog[open] {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+  pointer-events: auto;
+  transition-duration: var(--layer-enter);
+  transition-timing-function: var(--motion-ease-enter);
+}
+html[data-native-dialog-motion] dialog::backdrop {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--layer-exit) var(--motion-ease-exit),
+    display var(--layer-exit) allow-discrete, overlay var(--layer-exit) allow-discrete;
+}
+html[data-native-dialog-motion] dialog[open]::backdrop {
+  opacity: 1;
+  pointer-events: auto;
+  transition-duration: var(--layer-enter);
+  transition-timing-function: var(--motion-ease-enter);
+}
+@starting-style {
+  html[data-native-dialog-motion] dialog[open] {
+    opacity: 0; translate: var(--layer-from); scale: var(--layer-scale);
+  }
+  html[data-native-dialog-motion] dialog[open]::backdrop { opacity: 0; }
+}
+
+.aurel-motion-panel {
+  --panel-from: 0 -4px;
+  --panel-scale: 0.97;
+  --panel-enter: var(--motion-popover-enter);
+  --panel-exit: var(--motion-popover-exit);
+  opacity: 0;
+  translate: var(--panel-from);
+  scale: var(--panel-scale);
+  transform-origin: var(--motion-panel-origin, top right);
+  pointer-events: none;
+  transition: opacity var(--panel-exit) var(--motion-ease-exit),
+    translate var(--panel-exit) var(--motion-ease-exit),
+    scale var(--panel-exit) var(--motion-ease-exit);
+}
+.aurel-motion-panel[data-motion-kind="drawer"] {
+  --panel-from: 24px 0;
+  --panel-scale: 1;
+  --panel-enter: var(--motion-drawer-enter);
+  --panel-exit: var(--motion-drawer-exit);
+}
+.aurel-motion-panel[data-state="open"] {
+  opacity: 1; translate: 0 0; scale: 1;
+  pointer-events: auto;
+  transition-duration: var(--panel-enter);
+  transition-timing-function: var(--motion-ease-enter);
+}
+@starting-style {
+  .aurel-motion-panel[data-state="open"]:not([data-initial-open]) {
+    opacity: 0; translate: var(--panel-from); scale: var(--panel-scale);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  /* Information that work continues is the sole motion exception. */
+  [data-motion-activity="spin"] { animation: aurel-work-spin var(--motion-work-spin) linear infinite !important; }
+  [data-motion-activity="pulse"] { animation: aurel-work-pulse var(--motion-work-pulse) linear infinite !important; }
+}
+@keyframes aurel-work-spin { to { transform: rotate(360deg); } }
+@keyframes aurel-work-pulse { 50% { opacity: 0.4; } }

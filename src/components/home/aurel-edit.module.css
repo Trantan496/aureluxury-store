@@ -1,0 +1,77 @@
+.section { position: relative; background: #e9e1d6; color: #352a25; scroll-margin-top: 64px; }
+.scene { padding: 52px 0 32px; }
+.heading { padding-inline: clamp(20px, 5vw, 88px); display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 32px; }
+.eyebrow { font: 9px/1.6 Arial, sans-serif; letter-spacing: .18em; }
+.heading h2 { font: clamp(34px, 4vw, 60px)/1.05 "Times New Roman", Georgia, serif; letter-spacing: -.035em; margin-top: 14px; }
+.intro { font-size: 13px; color: #6f6258; }
+.intro span { display: block; font-size: 10px; margin-top: 8px; }
+.viewport { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #a08c77 #ded2c3; scroll-padding-inline: clamp(20px, 5vw, 88px); }
+.viewport:focus-visible { outline-offset: -3px; }
+.track { position: relative; display: flex; width: max-content; gap: 32px; padding-inline: clamp(20px, 5vw, 88px); }
+.look { display: grid; grid-template-columns: 58fr 42fr; width: min(85vw, 1260px); min-width: 0; background: #f6f2eb; scroll-snap-align: start; }
+.campaign { position: relative; min-height: 440px; aspect-ratio: 4/5; }
+.copy { min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: clamp(24px, 3vw, 48px); }
+.copy h3 { font: clamp(26px, 3vw, 44px)/1.08 "Times New Roman", Georgia, serif; letter-spacing: -.02em; margin: 20px 0; max-width: 15ch; }
+.leadCopy { align-items:flex-start; padding-inline:clamp(34px,5vw,80px); }
+.leadMeta { display:flex; width:100%; align-items:center; gap:18px; font:10px/1.6 Arial,sans-serif; letter-spacing:.2em; }
+.leadMeta i { display:block; height:1px; flex:1; max-width:174px; background:#a99786; }
+.leadCopy h3 { max-width:12ch; margin:clamp(48px,6vw,88px) 0 26px; font-size:clamp(38px,4.5vw,72px); line-height:1.04; letter-spacing:-.025em; }
+.leadCopy .description { max-width:26ch; font-size:15px; line-height:1.8; }
+.leadCta { display:inline-flex; align-items:center; justify-content:space-between; gap:36px; min-height:44px; margin-top:clamp(42px,6vw,80px); padding-bottom:10px; border-bottom:1px solid #6e5a49; color:#352a25; font-size:14px; }
+.description { font-size: 13px; color: #6f6258; line-height: 1.8; max-width: 32ch; }
+.pieces { margin-top: 28px; }
+.pieces ul { display: flex; gap: 14px; list-style: none; margin: 12px 0 0; padding: 0; }
+.pieces li { min-width: 0; flex: 0 1 80px; }
+.pieces a { display: block; }
+.pieces a > span { display: block; font-size: 9px; line-height: 1.5; margin-top: 8px; }
+.productImage { aspect-ratio: 3/4; position: relative; max-width: 72px; }
+.ctaArea { margin-top: 26px; }
+.demoCta { font-size: 10px; letter-spacing: .13em; display: flex; justify-content: space-between; align-items: center; min-height: 44px; border-bottom: 1px solid #b7a795; }
+.ctaArea p { font-size: 10px; color: #716456; line-height: 1.6; margin-top: 10px; }
+.ctaArea > a:not(.demoCta) { display: inline-flex; align-items: center; gap: 18px; min-height: 44px; font-size: 11px; text-decoration: underline; text-underline-offset: 4px; }
+.controls { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px clamp(20px, 5vw, 88px) 0; }
+.progressGroup { display: flex; gap: 24px; align-items: center; }
+.progressGroup p { font-size: 11px; letter-spacing: .12em; white-space: nowrap; }
+.total { color: #756655; }
+.progressTrack { width: clamp(60px, 12vw, 200px); height: 1px; background: #c7b8a5; }
+.progressTrack > div { height: 1px; width: 100%; background: #352a25; transform: scaleX(.1); transform-origin: left; }
+.scrollHint { font-size: 9px; letter-spacing: .17em; color: #6f6258; }
+.desktopHint { display: none; }
+.buttons { display: flex; gap: 10px; }
+.buttons button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #b7a795; border-radius: 50%; background: transparent; color: #352a25; cursor: pointer; font-size: 19px; }
+@media (hover: hover) and (pointer: fine) {
+.buttons button:hover:not(:disabled) { background: #352a25; color: #f6f2eb; } }
+.buttons button:disabled { opacity: .3; cursor: default; }
+.section[data-pinned="true"] .scene { position: sticky; top: 64px; height: calc(100svh - 64px); padding-top: 24px; display: flex; flex-direction: column; }
+.section[data-pinned="true"] .heading { margin-bottom: 24px; flex-shrink: 0; }
+.section[data-pinned="true"] .heading h2 { font-size: clamp(34px, 3.4vw, 52px); }
+.section[data-pinned="true"] .viewport { overflow: hidden; flex: 1; min-height: 0; }
+.section[data-pinned="true"] .track { height: 100%; will-change: transform; }
+.section[data-pinned="true"] .look { height: 100%; }
+.section[data-pinned="true"] .campaign { aspect-ratio: auto; min-height: 0; }
+.section[data-pinned="true"] .copy { overflow-y: auto; justify-content: safe center; padding-block: 20px; }
+.section[data-pinned="true"] .copy h3 { margin: 12px 0; font-size: clamp(26px, 2.6vw, 42px); }
+.section[data-pinned="true"] .pieces { margin-top: 16px; }
+.section[data-pinned="true"] .productImage { max-width: 48px; }
+.section[data-pinned="true"] .ctaArea { margin-top: 12px; }
+.section[data-pinned="true"] .controls { flex-shrink: 0; padding-top: 16px; }
+.section[data-pinned="true"] .desktopHint { display: inline; }
+.section[data-pinned="true"] .mobileHint { display: none; }
+@media (max-width: 767px) {
+  .heading { flex-direction: column; align-items: start; gap: 18px; }
+  .track { gap: 16px; }
+  .look { width: 86vw; grid-template-columns: 1fr; }
+  .campaign { aspect-ratio: 4/3; min-height: 0; }
+  .copy { padding: 28px 24px; }
+  .copy h3 { max-width: none; font-size: 30px; margin: 16px 0; }
+  .leadCopy { padding-inline:24px; }
+  .leadCopy h3 { margin:42px 0 18px; font-size:clamp(36px,10vw,48px); }
+  .leadMeta { gap:10px; font-size:9px; letter-spacing:.14em; }
+  .leadCta { margin-top:36px; }
+  .description { max-width: none; }
+  .pieces { margin-top: 20px; }
+  .productImage { max-width: 56px; }
+  .scrollHint { display: none; }
+  .progressGroup { gap: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .viewport { scroll-behavior: auto; } }

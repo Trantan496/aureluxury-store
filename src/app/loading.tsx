@@ -1,0 +1,1 @@
+export default function Loading() { return <div className="container page-section" style={{ minHeight: "100svh" }} role="status" aria-live="polite"><p className="eyebrow">VUI LÒNG CHỜ</p><h1>Đang tải nội dung…</h1><div className="loading-placeholder" aria-hidden="true"/></div>; }

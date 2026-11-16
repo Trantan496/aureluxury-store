@@ -1,0 +1,6 @@
+AUREL AI starter: copy into the EXISTING project root, do not replace package.json.
+Files: prisma/schema.prisma, prisma/seed.ts, prisma.config.ts, .env.example,
+src/lib/db/client.ts, src/lib/db/queries/orders.ts, src/lib/db/queries/products.ts,
+scripts/test-db.ts and README.md.
+The generated `src/generated/prisma/` is created after `npx prisma generate`.
+Always back up an existing Prisma schema or database before migrations.

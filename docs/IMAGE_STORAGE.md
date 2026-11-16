@@ -1,0 +1,52 @@
+# Upload và kho ảnh sản phẩm — 2026-10-22
+
+> Cập nhật 2026-10-23 — Complete the Look sửa trực tiếp và tự lưu: bấm/thả một ảnh vào khung12:13 cover/center, bỏ ảnh tại góc; bấm tên/giá để sửa, blur/Enter tự lưu, Escape hủy phần chữ đang sửa. Hàng đợi từng thẻ giữ version tuần tự, lỗi giữ dữ liệu/tệp và chờ retry tường minh. Thẻ mới nhận focus; hoàn thiện chỉ bật khi đủ ảnh/tên/giá đã lưu. Nền kéo sát mép trái bằng pseudo-element, chữ căn lề gallery, mép phải giữ nguyên. Gallery thay hàng nút lớn bằng menu thumbnail nhỏ Xóa/Đưa lên trước/Đưa về sau, giữ kéo sắp xếp và hỗ trợ thả tệp vào các slot. Không migration/main write; gallery65vh/panels37,5/25/37,5/navbar/publish giữ nguyên. Visual QA: Pending Manual Review.
+> Deployment 2026-10-23: Main aurel_ai: 9 reviewed migrations applied with owner approval; test: 11. PendingProduct is available; the two taxonomy migrations remain pending. No existing product data, sequences or .env changed.
+## Complete the Look mới (2026-10-23)
+Complete the Look thủ công đã code/test: nútThêm món trong Preview tạo PendingProduct blank/idempotent ngay; inline autosave ảnh/tên/giá VND, formHoàn thiện chọncategory/variants thật→existingShowroom→explicitpublish. Queue /admin/products/pending phân trang20, source link; source-look hàngngang/pagination20/khôngcap4. Public chỉ linked child đãpublish/cópublicimage+price, archiveẩn; detach giữqueue/product, parent khôngunpublish/touch. YouMayAlsoLike bỏcategoryheuristic, Preview Chờ AI Recommendations/Productionẩn khiAIchưa có. Main aurel_ai: 9 reviewed migrations applied with owner approval; test: 11. PendingProduct is available; the two taxonomy migrations remain pending. No existing product data, sequences or .env changed. Chi tiếtAPI/files/schema/checks tại [COMPLETE_THE_LOOK.md](COMPLETE_THE_LOOK.md).
+
+
+## Workflow cập nhật: ảnh chuyển sang Showroom (2026-10-22)
+Step1 chỉ dữ liệu + Tiếp theo, Step2 /admin/products/[id]/preview dùng shared PDP với public /products/[slug]. Click slot upload/replace/remove/order/cover/role persist ngay, reuse ImageAsset BYTEA và ProductImage metadata; không còn ảnh/summary/save buttons ở Step1. Step2 có Save Draft/Save Product/publish explicit. ProductDraftRequest migration staged test-only, main7/test10 chưa apply mới. Report/acceptance/checks/limits/migration approval tại [PRODUCT_SHOWROOM.md](PRODUCT_SHOWROOM.md). Các mô tả upload trong editor một bước bên dưới là lịch sử, không UI hiện tại.
+
+
+## Cách dùng hiện tại
+1. Bấm Thêm ảnh, chọn một/nhiều JPG/PNG/WebP từ máy (8MB/ảnh). Ảnh upload vào DB và xuất hiện ngay trong draft.
+2. Bấm thumbnail để chọn ảnh chính; bấm thùng rác để bỏ khỏi sản phẩm. Không nhập đường dẫn hoặc metadata/quyền thủ công nữa.
+3. Bấm Lưu sản phẩm để lưu liên kết, ảnh chính và bỏ ảnh cùng các trường sản phẩm. Upload do quản trị chọn cho website khi đang unknown được ghi website=granted/reference sự kiện chọn; không xác nhận giấy phép sở hữu, không cấp quyền AI hoặc thay explicit denied. Product active mới hiển thị cho khách. Không backfill DB chỉ vì mở trang.
+4. Mở Kho ảnh và gõ tên sản phẩm: tự tìm sau250ms, hoặc Tìm/Enter. Kết quả là ảnh upload đã gắn với tên sản phẩm được lưu; rename cập nhật kết quả sau save. Query trống xem cả ảnh chưa gắn. Đây là substring không phân biệt hoa/thường, chưa fuzzy/unaccent/semantic.12 ảnh/trang, binary không nhân bản khi dùng lại.
+
+## Cập nhật implementation 2026-10-22
+- imageLibrary(page,q) server ADMIN, q tối đa200 chars; SQL parameterized EXISTS qua ProductImage/Product, không wildcard injection; %/_ là literal. Không migration/index mới, main7/test9 giữ nguyên. Search hiện scan tên; cần index/search tối ưu khi catalog lớn.
+- UI có request-id guard/debounce cho response cũ; empty/loading/error/retry vẫn riêng. Metadata cũ còn trong DTO/draft/service, CSV không đổi. Không sửa bytes/rights của ảnh đã lưu khi chỉ mở trang.
+- removedImageIds optional trong aggregate payload: max100/unique/disjoint retained IDs/ownership, omission không tự xóa. Version/Serializable bảo vệ stale save. Delete metadata và update product cùng transaction; failure rollback giữ toàn bộ. Binary còn trong kho, không có GC tự động.
+- Files sửa src/components/admin/{image-storage.tsx,product-editor.tsx,products.module.css}, src/features/products/{image-storage.ts,editor-state.ts,management.ts}, src/app/api/admin/images/route.ts; tests/{product-editor.test.ts,product-editor.integration.test.ts,image-storage.integration.test.ts}. Không dependencies mới.
+-88 unit tests/11 PostgreSQL tests (gồm parent), lint/typecheck/build đạt. Tests mới/mở rộng kiểm tra search case/rename/literal SQL text/%/customer deny, explicit deletion đúng scope/atomic save và website-use payload giữ denied/AI; guarded fixture cleanup/rollback, main read-only fingerprint/env unchanged. Không HTTP/browser/automation/screenshots. Visual QA Pending Manual Review.
+- Owner kiểm tra upload/thumbnail primary/remove/new/edit/save failure/reload, search tên đã lưu và tên vừa sửa, query rỗng, paging/mobile/keyboard và quyền public của ảnh. Ảnh chưa gắn sản phẩm không tự có tên sản phẩm để tìm.
+
+## Lưu trữ và xử lý
+- ImageAsset: id UUID text, data BYTEA, mimeType=image/webp, width/height/byteSize/createdAt. CHECK UUID/1–1920px/1–8MiB/byteSize=octet_length(data), index createdAt,id. ProductImage.storageKey trỏ /images/uploads/{uuid}.webp, không nhét base64 vào Product hoặc ProductImage.
+- Stream body bounded8MiB, allowlisted Content-Type và decoder xác minh nội dung JPEG/PNG/WebP, từ chối SVG/corrupt/animation/ảnh vượt24MP. Sharp0.35.5 đã cài qua Next được khai báo direct dependency cùng phiên bản/lockfile, không đổi package version hoặc gọi provider. Offline npm install ban đầu thiếu cache metadata, không thành công; manifests pin lại package hiện hữu, npm ls sharp xác nhận cây hợp lệ.
+- Auto-rotate orientation, resize inside1920×1920 không phóng lớn, WebP quality82, strip EXIF/metadata. PNG trong suốt được giữ alpha; nguồn gốc không giữ bản binary riêng. Chưa dedupe nội dung giữa hai lần upload; mỗi upload UUID riêng.
+- Upload/list/private read reuse Product Service.run xác thực Better Auth/expiry/DB ADMIN trong Serializable transaction. Origin guard trước POST; service chỉ đọc/decode body sau authorization. GET list chỉ metadata, không blob. Không có endpoint promote/role/grant mới.
+- Public route kiểm tra live active product/websitePermission/reference mỗi request, no-store/nosniff; ảnh chưa gắn/unknown/denied/archived trả404 cho khách, ADMIN vẫn đọc được. Next localPatterns chặn optimizer đối với /images/uploads; gallery/editorial/collection opt out optimizer riêng uploads, không sửa layout. Không cam kết thu hồi bản đã được người xem tải về.
+- Kho giữ asset khi bỏ draft/xóa metadata/hard-delete product để reuse. Không có delete asset/GC trong scope này; dung lượng DB/backup tăng theo ảnh. Thích hợp local hiện tại; cần retention/quota/object storage khi triển khai lớn. CSV export chỉ metadata/path, không portable binary backup; pg_dump chứa binary.
+
+## Migration main và bằng chứng
+- 20261021110000_image_storage độc lập sau audience, không sửa SQL đã apply. Main7/9 migrations, test9/9. Hai registry/version SQL 20261022160000 và20261022161000 vẫn pending main.
+- Fresh backup/restore aurel_ai_restore_test_20261022024728_de031f, archive SHA2568ceb2635ccef166c5d7ff877b06498e60ce7312860d3426a0c1b2186ceb493cb. Files .local/backups/{name}.dump, .dump.verified.json, .image-storage-migration.json. Backup không commit.
+- scripts/main-image-storage-migration.ts yêu cầu --confirm-main=aurel_ai và verified restore exact pattern. Kiểm tra reviewed history/checksum/backup SHA/main fingerprint, dựng expected schema độc lập từ6 SQL cũ, scoped deploy7 SQL reviewed trên restore, compare old rows/sequences/expected schema, rồi scoped Prisma deploy main.
+- noDrift/rehearsalPassed/originalRowsPreserved/originalSequencesPreserved/imageStorageCreated/existingImagesUntouched/envUnchanged=true. Không upload fixture main hoặc thay users/products/old images; bảng mới rỗng sau deploy. Prisma read-only query main ImageAsset và history7 đạt. Runner one-off yêu cầu history6, không chạy lặp trên main7.
+- Next tự restart khi đổi config, listener28056/launcher7976 đúng workspace/TCP3000; Prisma singleton được reload. Không gửi HTTP QA, mở browser/Test Screen/Computer Use/Playwright/screenshot hoặc email. Log dev có request người dùng/historical warnings, không dùng làm bằng chứng QA của agent.
+
+## Files và kiểm tra
+- Schema/migration/manifest: prisma/schema.prisma, prisma/migrations/20261021110000_image_storage/migration.sql, tests/support/reviewed-migrations.json.
+- Logic/routes: src/features/products/{image-upload,image-storage,product-service,management}.ts; src/app/api/admin/images/route.ts; src/app/images/uploads/[file]/route.ts.
+- UI: src/components/admin/{image-storage.tsx,product-editor.tsx,products.module.css}; consumers src/components/products/product-gallery.tsx, src/components/home/{editorial-image,collection-grid}.tsx; next.config.ts.
+- Tools/tests: scripts/{product-editor-check,main-image-storage-migration}.ts, tests/{image-upload.test,image-storage.integration.test}.ts; package.json/package-lock.json. Generated Prisma client regenerated.
+- Docs IMAGE_STORAGE mới; PROJECT_CONTEXT/ARCHITECTURE/ROADMAP/SESSION_LOG/DECISIONS/ADMIN_PRODUCTS/PRODUCT_EDITOR/PRODUCT_FOUNDATION/DESIGN_SYSTEM và templates README cập nhật.
+- Thực chạy: Prisma generate; npm test87/87 (raster normalization/metadata stripping/invalid types/size/SVG/optimizer exclusion); guarded PostgreSQL suite11/11 gồm parent (ADMIN-before-body, private blob, list no-data, public rights/archive/revoke + regression CRUD/CSV). Fixtures test rollback/cleanup, main fingerprint/env unchanged trong tests. Lần đầu tsx sandbox ENOMEM; chạy ngoài sandbox và sửa fixture thiếu fullName rồi suite đạt. pg queue deprecation cũ không fail.
+- npm run lint/typecheck/build đều đạt; npm ls sharp hợp lệ. Backup verified restore/rehearsal/main postcheck đạt. Không thêm test mirror CSS hoặc browser end-to-end.
+
+## Pending Manual Review
+Owner refresh admin bằng session thật: chọn nhiều ảnh/cancel picker/PNG alpha/ảnh lớn hoặc sai định dạng; preview/ảnh chính/kho rỗng/loading/error/pagination/reuse; ảnh chính/bỏ ảnh/save/reload/search tên và draft bỏ dở giữ asset trong kho; kiểm tra quyền public/explicit denied, active→archived với khách chưa đăng nhập; mobile/keyboard/giữ bố cục. Không tuyên bố pixel-match hoặc browser upload đã nghiệm thu từ build/test dịch vụ.

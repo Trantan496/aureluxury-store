@@ -1,0 +1,68 @@
+{
+  "name": "fashion-store",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "overrides": {
+    "minimatch": "$minimatch"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "node scripts/start-all.mjs",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "node --conditions=react-server --experimental-strip-types --test tests/catalog.test.ts tests/collection.test.ts tests/prisma-catalog.test.ts tests/product-detail.test.ts tests/product-service.test.ts tests/auth.test.ts tests/auth-email.test.ts tests/auth-ui.test.ts tests/resend.test.ts tests/test-database-safety.test.ts tests/money.test.ts tests/security-policy.test.ts tests/product-foundation.test.ts tests/product-editor.test.ts tests/product-description.test.ts tests/product-audience.test.ts tests/image-upload.test.ts tests/product-showroom.test.ts tests/pending-autosave.test.ts tests/variant-matrix.test.ts tests/shop-rules.test.ts",
+    "test:catalog-db": "node --conditions=react-server --import tsx --test tests/catalog-db.test.ts",
+    "test:postgres:setup": "node --experimental-strip-types scripts/postgres-integration.ts setup",
+    "test:postgres": "node --experimental-strip-types scripts/postgres-integration.ts run",
+    "test:postgres:backup": "node --experimental-strip-types scripts/postgres-integration.ts backup",
+    "test:smoke": "node tests/http-smoke.mjs",
+    "db:start": "node scripts/local-db.mjs start",
+    "db:stop": "node scripts/local-db.mjs stop",
+    "db:check": "node scripts/check-db.mjs",
+    "db:migrate": "node scripts/staged-migration-guard.mjs",
+    "test:admin-products": "node --experimental-strip-types scripts/admin-products-check.ts",
+    "test:product-editor": "node --experimental-strip-types scripts/product-editor-check.ts",
+    "test:product-foundation": "node --conditions=react-server --import tsx scripts/product-foundation-check.ts",
+    "products:import:dry-run": "node --experimental-strip-types scripts/product-import-dry-run.ts",
+    "products:features:export": "node --experimental-strip-types scripts/export-product-features.ts",
+    "test:showroom-ui": "tsx --tsconfig tests/tsconfig.ui.json --test tests/product-showroom-ui.test.tsx",
+    "test:payos": "tsx --tsconfig tests/tsconfig.ui.json --test tests/payos.test.mjs",
+    "test:lint-compat": "node --test tests/lint-minimatch-compat.test.mjs",
+    "test:seller-orders": "tsx --tsconfig tests/tsconfig.ui.json --test tests/seller-orders.test.mjs"
+  },
+  "dependencies": {
+    "@payos/node": "^2.0.5",
+    "@prisma/adapter-pg": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "better-auth": "^1.7.12",
+    "dotenv": "^18.0.8",
+    "lenis": "1.3.25",
+    "next": "^16.4.3",
+    "pg": "^8.23.1",
+    "qrcode": "^1.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "server-only": "^0.0.1",
+    "sharp": "0.35.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.23.1",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.3",
+    "minimatch": "11.0.3",
+    "prisma": "^7.10.1",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.0"
+  }
+}

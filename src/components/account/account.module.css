@@ -1,0 +1,41 @@
+/* Account dashboard layout: sidebar 260px + fluid content, max width 1440px. */
+.page { --acc-bg: #f8f5f1; --acc-surface: #f4eee8; --acc-surface-2: #efe3d7; --acc-brown: #68452f; --acc-brown-hover: #533624; --acc-text: #29231f; --acc-muted: #817970; --acc-border: #e9e1d9; min-height: 70vh; background: radial-gradient(60% 40% at 0% 55%, rgb(214 197 181 / 22%), transparent 70%), var(--acc-bg); color: var(--acc-text); }
+.layout { width: 100%; max-width: 1440px; margin-inline: auto; padding: 40px clamp(20px, 4vw, 64px) 96px; display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 40px; align-items: start; }
+
+.sidebar { padding: 20px 14px 14px; border: 1px solid var(--acc-border); border-radius: 16px; background: var(--acc-surface); }
+.sidebar ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.sidebarTitle { margin: 0 8px 14px; font: 600 17px/1.3 Arial, sans-serif; color: var(--acc-text); }
+.navLink { position: relative; display: flex; align-items: center; gap: 16px; min-height: 52px; padding: 0 16px; border-radius: 10px; color: var(--acc-text); font: 400 15px/1.2 Arial, sans-serif; text-decoration: none; transition: background-color var(--motion-feedback) ease, color var(--motion-feedback) ease; }
+@media (hover: hover) and (pointer: fine) {
+.navLink:hover { background: rgb(239 227 215 / 60%); } }
+.navLink[aria-current="page"] { background: var(--acc-surface-2); font-weight: 600; }
+.navLink[aria-current="page"]::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 3px 0 0 3px; background: #29231f; }
+.navIcon { width: 21px; height: 21px; flex: none; stroke-width: 1.4; }
+.navLink:focus-visible { outline: 2px solid var(--acc-brown); outline-offset: 2px; }
+
+.main { min-width: 0; animation: none; }
+.breadcrumb ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font: 400 13.5px/1.4 Arial, sans-serif; color: var(--acc-muted); }
+.breadcrumb li { display: inline-flex; align-items: center; gap: 8px; }
+.breadcrumb a { display: inline-flex; align-items: center; gap: 7px; color: var(--acc-muted); transition: color var(--motion-feedback) ease; }
+@media (hover: hover) and (pointer: fine) {
+.breadcrumb a:hover { color: var(--acc-brown); } }
+.breadcrumb svg { width: 15px; height: 15px; stroke-width: 1.5; }
+.breadcrumb [aria-current="page"] { color: var(--acc-brown); font-weight: 600; }
+.title { margin: 6px 0 22px; font: 400 clamp(38px, 4.2vw, 58px)/1.1 var(--font-storefront-serif, "Times New Roman"), "Times New Roman", serif; letter-spacing: -.01em; color: var(--acc-text); }
+
+@media (max-width: 1023px) {
+  .layout { grid-template-columns: 210px minmax(0, 1fr); gap: 28px; padding-top: 32px; }
+  .navLink { gap: 12px; padding: 0 12px; }
+}
+@media (max-width: 767px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 20px; padding-top: 24px; padding-bottom: 64px; }
+  .sidebar { padding: 6px; border-radius: 14px; }
+  .sidebarTitle { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); margin: 0; }
+  .sidebar ul { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+  .sidebar ul::-webkit-scrollbar { display: none; }
+  .navLink { white-space: nowrap; min-height: 46px; padding: 0 14px; gap: 8px; font-size: 14px; }
+  .navLink[aria-current="page"]::before { left: 10px; right: 10px; top: auto; bottom: 0; width: auto; height: 3px; border-radius: 3px 3px 0 0; }
+  .title { font-size: 38px; }
+}
+@media (prefers-reduced-motion: reduce) { .main { animation: none; } .navLink, .breadcrumb a { transition: none; } }
+

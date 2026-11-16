@@ -1,0 +1,6 @@
+[submodule "backend/cat-vton"]
+	path = backend/cat-vton
+	url = https://huggingface.co/spaces/zhengchong/CatVTON
+[submodule "backend/dm-vton"]
+	path = backend/dm-vton
+	url = https://github.com/KiseKloset/DM-VTON.git

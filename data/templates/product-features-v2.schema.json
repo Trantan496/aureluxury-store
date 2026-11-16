@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AUREL Product Features v2 — shared taxonomy registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "taxonomy_version",
+    "product_id",
+    "purpose",
+    "features",
+    "eligibility",
+    "missing"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aurel-product-features-v2"
+    },
+    "taxonomy_version": {
+      "const": "aurel-fashion-v2"
+    },
+    "product_id": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$"
+    },
+    "purpose": {
+      "enum": [
+        "embedding",
+        "training"
+      ]
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "garment_type",
+        "collar",
+        "fabric",
+        "gender",
+        "fit",
+        "color",
+        "size",
+        "style_tags",
+        "season_tags",
+        "occasion_tags",
+        "layer_role",
+        "pattern",
+        "silhouette",
+        "description",
+        "image_references"
+      ],
+      "properties": {
+        "category": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "garment_type": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "maxLength": 60
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "collar": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "maxLength": 60
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fabric": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "maxLength": 60
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gender": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "maxLength": 60
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "maxLength": 60
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "color": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "maxLength": 60
+          }
+        },
+        "size": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)*$",
+            "maxLength": 60
+          }
+        },
+        "style_tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "maxLength": 60
+          }
+        },
+        "season_tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "maxLength": 60
+          }
+        },
+        "occasion_tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "maxLength": 60
+          }
+        },
+        "layer_role": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "maxLength": 60
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pattern": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "maxLength": 60
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "silhouette": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "maxLength": 60
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 10000
+        },
+        "image_references": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "image_id",
+              "url"
+            ],
+            "properties": {
+              "image_id": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$"
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^/images/"
+              }
+            }
+          }
+        }
+      }
+    },
+    "eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "active",
+        "in_stock"
+      ],
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "in_stock": {
+          "type": "boolean"
+        }
+      }
+    },
+    "missing": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "category",
+          "garment_type",
+          "collar",
+          "fabric",
+          "gender",
+          "fit",
+          "color",
+          "size",
+          "style_tags",
+          "season_tags",
+          "occasion_tags",
+          "layer_role",
+          "pattern",
+          "silhouette",
+          "description",
+          "image_references"
+        ]
+      }
+    }
+  },
+  "$comment": "Lexical schema only. Tokens must also pass foundation.profile/option against the exported taxonomyRegistry snapshot. not-applicable is exclusive in tag arrays; null/[] means unknown."
+}

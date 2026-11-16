@@ -1,0 +1,98 @@
+.lookEmpty { min-width:0; width:100%; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:12px; min-height:180px; padding:20px; color:#897c6d; font-size:13px; line-height:1.6; white-space:normal; }
+.lookEmpty a { color:#34251f; text-decoration:underline; text-underline-offset:4px; }
+.lookPanel {
+  --look-gap:12px;
+  display:grid;
+  grid-template-columns:minmax(140px,22%) minmax(0,1fr);
+  align-items:start;
+  gap:20px;
+  min-width:0;
+  margin-top:12px;
+  padding:8px 12px 6px 0;
+  position:relative;
+  isolation:isolate;
+  color:#34251f;
+  font-family:var(--font-storefront-sans),var(--font-storefront-serif),sans-serif;
+}
+.lookPanel::before { content:""; position:absolute; z-index:-1; inset:0 0 0 calc(-1 * var(--product-page-edge,40px)); background:linear-gradient(110deg,#f5f0e9,#eee8e0); pointer-events:none; }
+.lookHeading { min-width:0; padding-top:12px; }
+.lookPanel .lookHeading h2 { margin:0 0 10px; font:500 36px/1 var(--font-storefront-serif),serif; letter-spacing:-.025em; }
+.lookHeading > p { margin:0 0 14px; font:400 13px/1.35 var(--font-storefront-serif),serif; }
+.lookPanel button { border:1px solid #d8cbbd; border-radius:0; padding:6px 10px; background:transparent; color:inherit; font:400 10px/1.4 var(--font-storefront-sans),var(--font-storefront-serif),sans-serif; cursor:pointer; }
+.lookPanel button:disabled { opacity:.45; cursor:not-allowed; }
+.lookPanel .shopLook { display:flex; align-items:center; justify-content:space-between; gap:12px; width:140px; max-width:100%; min-height:34px; padding:7px 12px; border-color:#9c8f80; font-size:10px; letter-spacing:.03em; }
+.shopLook > span { font-size:16px; }
+.railFrame { position:relative; min-width:0; width:100%; container-type:inline-size; }
+.lookRail { display:flex; align-items:flex-start; gap:var(--look-gap); min-width:0; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x proximity; scrollbar-width:none; -ms-overflow-style:none; }
+.lookRail::-webkit-scrollbar { display:none; width:0; height:0; }
+.lookCard,.lookPanel .addLook { flex:0 0 max(120px,calc((100% - 36px) / 4)); min-width:0; scroll-snap-align:start; }
+.lookCard { position:relative; text-decoration:none; }
+.cardPhoto,.lookPanel .addLook { aspect-ratio:12/13; }
+.cardPhoto { display:grid; place-items:center; position:relative; overflow:hidden; background:#e9e3da; color:#9a8b7b; font-size:10px; }
+.cardPhoto img { object-fit:cover; object-position:center top; }
+.lookPanel .photoEdit { position:absolute; inset:0; width:100%; height:100%; min-height:0; padding:0; border:0; background:transparent; }
+.lookPanel .lookCard h3 { margin:6px 0 0; font:400 11px/1.4 var(--font-storefront-sans),var(--font-storefront-serif),sans-serif; overflow-wrap:anywhere; }
+.lookCard p,.lookCard a { font-size:11px; line-height:1.4; overflow-wrap:anywhere; }
+.lookCard > p { margin:3px 0 0; }
+.cardDetails,.inlineDetails { position:relative; padding-right:28px; }
+.cardDetails > p { margin:3px 0 0; font-size:11px; }
+.inlineDetails { display:grid; gap:2px; padding-top:6px; }
+.lookPanel .lookCard .inlineText { width:100%; min-height:0; padding:0; border:0; text-align:left; font-size:11px; line-height:1.4; overflow-wrap:anywhere; }
+.lookPanel .inlineText[data-placeholder=true] { color:#958777; }
+@media (hover: hover) and (pointer: fine) {
+.lookPanel .inlineText:hover { text-decoration:underline; text-underline-offset:3px; } }
+.lookPanel .inlineDetails input,.lookPanel .inlineDetails textarea { width:100%; min-width:0; min-height:24px; margin:0; padding:0; border:0; border-bottom:1px solid #9c8f80; border-radius:0; background:transparent; color:inherit; font:400 10px/1.4 var(--font-storefront-sans),sans-serif; resize:vertical; }
+.cardOpen,.lookPanel .completeCard { position:absolute; top:6px; right:0; display:grid; place-items:center; width:26px; height:26px; border:1px solid #d6cabc; border-radius:50%; font-size:18px; text-decoration:none; }
+.cardOpen { top:7px; }
+@media (hover: hover) and (pointer: fine) {
+a.lookCard:hover .cardOpen, .completeCard:hover { border-color:#80684c; } }
+.cardTools { position:absolute; top:5px; left:5px; z-index:2; }
+.cardTools > summary,.lookPanel .removePhoto { display:grid; place-items:center; width:22px; height:22px; min-height:22px; padding:0; border:0; border-radius:50%; background:#fffaf1d9; color:#584b3d; font-size:16px; line-height:1; opacity:0; cursor:pointer; }
+.cardTools > summary { list-style:none; }
+.cardTools > summary::-webkit-details-marker { display:none; }
+.lookPanel .removePhoto { position:absolute; z-index:1; top:5px; right:5px; }
+@media (hover: hover) and (pointer: fine) {
+.lookCard:hover .cardTools > summary, .cardPhoto:hover .removePhoto { opacity:1; } }
+.lookCard:focus-within .cardTools > summary, .cardTools[open] > summary, .cardPhoto:focus-within .removePhoto { opacity:1; }
+.lookPanel .cardUtility { min-height:26px; padding:3px 0; border:0; font-size:10px; text-decoration:underline; text-underline-offset:3px; }
+.lookPanel .cardTools > .cardUtility { display:block; min-height:32px; margin-top:4px; padding:6px 10px; border:1px solid #d6cabc; background:#fffaf1; white-space:nowrap; }
+.lookPanel .cardStatus { margin:3px 0 0; font-size:10px; line-height:1.4; color:#897c6d; }
+.cardStatus[data-active=false],.railStatus[data-error=false] { position:absolute; width:1px; height:1px; padding:0; margin:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+.cardStatus:empty,.railStatus:empty { display:none; }
+.railNavigation { position:absolute; inset:auto -10px auto; top:max(51px,calc(13.541667cqw - 18.875px)); display:flex; justify-content:space-between; pointer-events:none; z-index:3; }
+.lookPanel .railNavigation button { pointer-events:auto; width:28px; min-height:28px; padding:0; border-radius:50%; background:#faf7f1ed; font-size:20px; line-height:1; }
+.railNavigation button:last-child { margin-left:auto; }
+.railNavigation button[hidden],.lookPanel[data-empty=true] .railNavigation { display:none; }
+.lookPanel .addLook { display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; align-self:flex-start; padding:12px; border:1px dashed #d6cabc; background:#ffffff20; color:#897c6d; font-size:10px; }
+.addLook > span:first-child { font-size:24px; line-height:1; font-weight:400; }
+@media (hover: hover) and (pointer: fine) {
+.lookPanel .addLook:hover:not(:disabled) { border-color:#92795e; background:#ffffff50; } }
+.lookPanel > p { grid-column:1/-1; margin:0; font-size:11px; }
+.lookPanel .loadMore { grid-column:2; justify-self:start; min-height:28px; }
+.lookPanel :is(a,button,input,textarea,summary):focus-visible,.lookCard:focus-visible,.lookRail:focus-visible { outline:1px solid #80684c; outline-offset:-1px; }
+.cardPhoto[data-drag-over=true] { outline:2px solid #80684c; outline-offset:-2px; }
+.queuePanel { padding:24px; }
+.lookPanel.queuePanel { grid-template-columns:minmax(0,1fr); }
+.queuePanel::before { display:none; }
+.queuePanel .lookRail { flex-wrap:wrap; overflow:visible; }
+.queuePanel .lookRail > div { flex:0 0 210px; min-width:0; }
+@media(max-width:900px) {
+  .lookPanel { grid-template-columns:140px minmax(0,1fr); gap:16px; }
+  .railFrame { width:100%; }
+  .lookPanel .lookHeading h2 { font-size:32px; }
+  .lookCard,.lookPanel .addLook { flex-basis:max(130px,calc((100% - 24px) / 3)); }
+  .railNavigation { top:max(56px,calc(18.055556cqw - 18.333333px)); }
+}
+@media(max-width:600px) {
+  .lookPanel { grid-template-columns:minmax(0,1fr); gap:14px; margin-top:20px; padding:14px 0 10px; }
+  .lookHeading { display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px 16px; padding:0; }
+  .lookPanel .lookHeading h2 { margin:0; font-size:28px; }
+  .lookHeading > p { grid-column:1; margin:0; }
+  .lookPanel .shopLook { grid-column:2; grid-row:1/3; }
+  .lookCard,.lookPanel .addLook { flex-basis:44%; }
+  .railNavigation { display:none; }
+  .lookPanel .loadMore { grid-column:1; }
+  .queuePanel { padding:16px; }
+}
+@media(hover:none) { .lookPanel .removePhoto,.cardTools > summary { opacity:1; } }
+@media(prefers-reduced-motion:reduce) { .lookRail { scroll-behavior:auto; } }

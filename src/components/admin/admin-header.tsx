@@ -1,0 +1,7 @@
+import Link from "next/link";
+import { AccountPanel } from "@/components/auth/account-control";
+import { AdminIcon } from "./admin-icon";
+import styles from "./products.module.css";
+export function AdminHeader() {
+  return <><a className="skip-link" href="#main-content">Đến nội dung chính</a><header className={styles.adminHeader}><Link href="/" className={styles.brand} aria-label="AUREL — Trang chủ">AUREL</Link><nav aria-label="Khám phá cửa hàng"><Link href="/products">Khám phá</Link><Link href="/#collection">Danh mục</Link></nav><div className={styles.headerActions}><Link href="/products" aria-label="Tìm kiếm"><AdminIcon name="search"/></Link><Link href="/admin/messages" aria-label="Tin nhắn khách hàng" title="Tin nhắn khách hàng"><AdminIcon name="chat"/></Link><Link href="/admin/reviews" aria-label="Đánh giá sản phẩm" title="Đánh giá sản phẩm"><AdminIcon name="star"/></Link><button disabled type="button" aria-label="Thông báo chưa khả dụng" title="Thông báo chưa khả dụng"><AdminIcon name="bell"/></button><Link href="/cart" aria-label="Giỏ hàng"><AdminIcon name="bag"/></Link><details className={styles.accountMenu}><summary aria-label="Mở menu tài khoản" title="Tài khoản"><span className={styles.accountAvatar}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></span></summary><div><AccountPanel/></div></details></div></header></>;
+}

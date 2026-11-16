@@ -1,0 +1,92 @@
+.container { width: 100%; min-width: 0; }
+
+.statusOk, .statusError { margin-bottom: 20px; padding: 13px 18px; border-radius: 12px; font-size: 14px; line-height: 1.5; }
+.statusOk { background: #f5f8ed; border: 1px solid #d8e2c8; color: #4b5f2f; }
+.statusError { background: #fbeeea; border: 1px solid #e3bdb2; color: #8a2f1c; }
+
+/* Main card */
+.card { padding: 36px clamp(20px, 3.5vw, 44px) 40px; border: 1px solid #ece3da; border-radius: 20px; background: radial-gradient(70% 90% at 100% 100%, rgb(255 255 255 / 65%), transparent 60%), linear-gradient(135deg, #faf5ef, #f2eae0); box-shadow: 0 2px 18px rgb(104 69 47 / 3%); }
+
+/* Avatar header */
+.header { display: flex; align-items: center; gap: 24px; margin-bottom: 32px; }
+.avatarWrapper { position: relative; width: 84px; height: 84px; flex-shrink: 0; }
+.avatar { width: 84px; height: 84px; border-radius: 50%; background: #ebded3; display: grid; place-items: center; color: #68452f; }
+.avatarIcon { width: 44px; height: 44px; stroke-width: 1.35; }
+.cameraBadge { position: absolute; bottom: 0; right: 0; width: 28px; height: 28px; border-radius: 50%; background: #68452f; border: 2.5px solid #faf5ef; display: grid; place-items: center; color: #fff; cursor: pointer; padding: 0; transition: background-color var(--motion-feedback) ease, transform var(--motion-feedback) var(--motion-ease-enter); }
+@media (hover: hover) and (pointer: fine) {
+.cameraBadge:hover { background: #533624; } }
+.cameraBadge svg { width: 14px; height: 14px; stroke-width: 1.5; }
+
+.headerText { min-width: 0; }
+.title { margin: 0 0 6px; font: 600 19px/1.3 Arial, sans-serif; color: #29231f; }
+.subtitle { margin: 0; font: 400 14px/1.5 Arial, sans-serif; color: #817970; }
+
+/* Form fields */
+.form { display: grid; gap: 18px; }
+.fieldRow { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 20px; align-items: center; }
+.label { font: 500 14.5px/1.2 Arial, sans-serif; color: #29231f; }
+.inputWrapper { min-width: 0; width: 100%; }
+
+.control { position: relative; width: 100%; display: flex; align-items: center; }
+.leadingIcon { position: absolute; left: 16px; width: 19px; height: 19px; color: #776c63; stroke-width: 1.45; pointer-events: none; flex-shrink: 0; }
+.trailingIcon { position: absolute; right: 16px; width: 17px; height: 17px; color: #776c63; stroke-width: 1.45; pointer-events: none; }
+
+.input { width: 100%; height: 48px; padding: 0 16px 0 46px; border: 1px solid #e2d7cc; border-radius: 12px; background: #ffffff; font: 400 15px/1 Arial, sans-serif; color: #29231f; transition: border-color var(--motion-feedback) ease; }
+.input::placeholder { color: #9e948b; opacity: 1; }
+@media (hover: hover) and (pointer: fine) {
+.input:hover:not(:disabled) { border-color: #d2c4b7; } }
+.input:focus-visible { outline: none; border-color: #68452f; box-shadow: 0 0 0 3px rgb(104 69 47 / 12%); }
+
+.control.disabled .input { background: #ebe1d7; border-color: #ddd2c6; color: #29231f; cursor: not-allowed; }
+
+.select { appearance: none; cursor: pointer; padding-right: 44px; }
+
+.textareaControl { align-items: flex-start; }
+.textarea { height: 74px; padding-top: 14px; padding-bottom: 14px; resize: vertical; line-height: 1.45; }
+.textareaIcon { top: 15px; }
+
+/* Button row */
+.buttonRow { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 20px; margin-top: 8px; }
+.labelSpacer { width: 180px; }
+.submitButton { width: 100%; height: 48px; border: 0; border-radius: 12px; background: #68452f; color: #ffffff; font: 500 15.5px/1 Arial, sans-serif; cursor: pointer; transition: background-color var(--motion-feedback) ease, transform var(--motion-feedback) var(--motion-ease-enter); box-shadow: 0 3px 10px rgb(104 69 47 / 10%); }
+@media (hover: hover) and (pointer: fine) {
+.submitButton:hover:not(:disabled) { background: #533624; box-shadow: 0 5px 14px rgb(104 69 47 / 16%); } }
+.submitButton:active:not(:disabled) { transform: translateY(0); }
+.submitButton:disabled { cursor: not-allowed; opacity: 0.72; }
+
+/* Footer link */
+.footerLink { margin-top: 24px; }
+.pwdLink { display: inline-flex; align-items: center; gap: 8px; color: #29231f; font: 500 14.5px/1 Arial, sans-serif; text-decoration: none; transition: color var(--motion-feedback) ease; }
+@media (hover: hover) and (pointer: fine) {
+.pwdLink:hover { color: #68452f; } }
+.pwdLink span:first-of-type { text-decoration: underline; text-underline-offset: 4px; }
+.lockIcon { width: 17px; height: 17px; color: #29231f; stroke-width: 1.4; }
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .fieldRow, .buttonRow { grid-template-columns: 140px minmax(0, 1fr); gap: 16px; }
+  .labelSpacer { width: 140px; }
+  .card { padding: 30px 24px 32px; }
+}
+
+@media (max-width: 767px) {
+  .card { padding: 24px 18px 28px; border-radius: 16px; }
+  .header { gap: 18px; margin-bottom: 24px; }
+  .avatarWrapper { width: 68px; height: 68px; }
+  .avatar { width: 68px; height: 68px; }
+  .avatarIcon { width: 36px; height: 36px; }
+  .cameraBadge { width: 24px; height: 24px; border-width: 2px; }
+  .cameraBadge svg { width: 12px; height: 12px; }
+  .title { font-size: 17px; }
+  .subtitle { font-size: 13px; }
+  .fieldRow, .buttonRow { grid-template-columns: 1fr; gap: 8px; }
+  .labelSpacer { display: none; }
+  .submitButton { height: 48px; margin-top: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .input, .submitButton, .cameraBadge, .pwdLink { transition: none; }
+  @media (hover: hover) and (pointer: fine) {
+  .submitButton:hover:not(:disabled) { } }
+}
+

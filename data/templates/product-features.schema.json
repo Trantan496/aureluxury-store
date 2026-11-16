@@ -1,0 +1,354 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AUREL Product Features v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "taxonomy_version",
+    "product_id",
+    "purpose",
+    "features",
+    "eligibility",
+    "missing"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aurel-product-features-v1"
+    },
+    "taxonomy_version": {
+      "const": "aurel-fashion-v1"
+    },
+    "product_id": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$"
+    },
+    "purpose": {
+      "enum": [
+        "embedding",
+        "training"
+      ]
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "garment_type",
+        "collar",
+        "fabric",
+        "gender",
+        "fit",
+        "color",
+        "size",
+        "style_tags",
+        "season_tags",
+        "occasion_tags",
+        "layer_role",
+        "pattern",
+        "silhouette",
+        "description",
+        "image_references"
+      ],
+      "properties": {
+        "category": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "garment_type": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "t-shirt",
+                "shirt",
+                "polo",
+                "trousers",
+                "jeans",
+                "shorts",
+                "skirt",
+                "dress",
+                "jacket",
+                "coat",
+                "knitwear"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "collar": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "round-neck",
+                "v-neck",
+                "polo",
+                "high-neck",
+                "shirt-collar"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fabric": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "cotton",
+                "linen",
+                "denim",
+                "polyester",
+                "wool",
+                "silk",
+                "viscose",
+                "nylon",
+                "leather"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gender": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "men",
+                "women",
+                "unisex"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "slim-fit",
+                "regular-fit",
+                "relaxed-fit",
+                "oversized"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "color": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "black",
+              "white",
+              "beige",
+              "brown",
+              "navy",
+              "blue",
+              "red",
+              "green",
+              "grey",
+              "pink",
+              "yellow",
+              "purple",
+              "orange"
+            ]
+          }
+        },
+        "size": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "XS",
+              "S",
+              "M",
+              "L",
+              "XL",
+              "XXL"
+            ]
+          }
+        },
+        "style_tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "minimal",
+              "classic",
+              "casual",
+              "formal",
+              "streetwear",
+              "sporty"
+            ]
+          }
+        },
+        "season_tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "spring",
+              "summer",
+              "autumn",
+              "winter",
+              "all-season"
+            ]
+          }
+        },
+        "occasion_tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "everyday",
+              "work",
+              "evening",
+              "travel",
+              "sport",
+              "ceremony"
+            ]
+          }
+        },
+        "layer_role": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "base",
+                "mid",
+                "outer",
+                "standalone"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pattern": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "solid",
+                "striped",
+                "checked",
+                "floral",
+                "graphic",
+                "textured"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "silhouette": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "straight",
+                "a-line",
+                "tapered",
+                "wide",
+                "fitted",
+                "boxy"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 10000
+        },
+        "image_references": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "image_id",
+              "url"
+            ],
+            "properties": {
+              "image_id": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$"
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^/images/"
+              }
+            }
+          }
+        }
+      }
+    },
+    "eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "active",
+        "in_stock"
+      ],
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "in_stock": {
+          "type": "boolean"
+        }
+      }
+    },
+    "missing": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "category",
+          "garment_type",
+          "collar",
+          "fabric",
+          "gender",
+          "fit",
+          "color",
+          "size",
+          "style_tags",
+          "season_tags",
+          "occasion_tags",
+          "layer_role",
+          "pattern",
+          "silhouette",
+          "description",
+          "image_references"
+        ]
+      }
+    }
+  }
+}

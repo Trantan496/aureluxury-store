@@ -1,0 +1,124 @@
+.container { width: 100%; min-width: 0; }
+
+/* Filter Tabs Bar */
+.tabsBar { margin-bottom: 24px; padding: 6px; border: 1px solid #eae1d7; border-radius: 16px; background: #faf5ef; }
+.tabsList { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.tabsList::-webkit-scrollbar { display: none; }
+
+.tab, .tabActive { height: 44px; padding: 0 18px; border: 0; border-radius: 12px; font: 500 14px/1 Arial, sans-serif; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; cursor: pointer; transition: background-color var(--motion-feedback) ease, color var(--motion-feedback) ease; }
+.tab { background: transparent; color: #29231f; }
+@media (hover: hover) and (pointer: fine) {
+.tab:hover { background: #efe3d7; } }
+.tabActive { background: #68452f; color: #ffffff; }
+.tabIcon { width: 17px; height: 17px; flex-shrink: 0; stroke-width: 1.45; }
+
+/* Empty state */
+.emptyCard { padding: 48px 24px; text-align: center; border: 1px solid #eae1d7; border-radius: 16px; background: #faf5ef; }
+.emptyIcon { width: 48px; height: 48px; color: #817970; margin-bottom: 12px; stroke-width: 1.3; }
+.emptyTitle { margin: 0 0 8px; font: 400 24px/1.2 var(--font-storefront-serif, "Times New Roman"), "Times New Roman", serif; color: #29231f; }
+.emptyDesc { margin: 0 auto 24px; max-width: 440px; font: 400 14.5px/1.6 Arial, sans-serif; color: #817970; }
+.emptyCta { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 28px; border-radius: 10px; background: #68452f; color: #ffffff; text-decoration: none; font: 500 14.5px/1 Arial, sans-serif; transition: background-color var(--motion-feedback) ease; }
+@media (hover: hover) and (pointer: fine) {
+.emptyCta:hover { background: #533624; } }
+
+/* Order Cards List */
+.ordersList { display: grid; gap: 16px; }
+.orderCard { border: 1px solid #eae1d7; border-radius: 16px; background: #fffdfb; box-shadow: 0 2px 14px rgb(104 69 47 / 3%); overflow: hidden; transition: border-color var(--motion-feedback) ease; }
+@media (hover: hover) and (pointer: fine) {
+.orderCard:hover { border-color: #ded1c4; box-shadow: 0 4px 20px rgb(104 69 47 / 6%); } }
+
+.cardMain { padding: 20px 24px; display: grid; grid-template-columns: 160px 150px 140px 220px minmax(0, 1fr); align-items: center; gap: 20px; }
+
+/* Column 1: Info */
+.infoCol { display: grid; gap: 4px; }
+.orderNumber { font: 700 15.5px/1.2 Arial, sans-serif; color: #29231f; }
+.orderDate { font: 400 13px/1.3 Arial, sans-serif; color: #817970; }
+
+/* Column 2: Thumbnails */
+.thumbsCol { display: flex; align-items: center; gap: 8px; }
+.thumbWrapper { position: relative; width: 48px; height: 58px; border-radius: 8px; background: #efe3d7; overflow: hidden; flex-shrink: 0; border: 1px solid rgb(255 255 255 / 80%); }
+.thumbImage { object-fit: cover; }
+.thumbFallback { width: 100%; height: 100%; display: grid; place-items: center; color: #817970; }
+.thumbFallback svg { width: 22px; height: 22px; }
+.moreBadge { width: 36px; height: 36px; border-radius: 8px; background: #f3ece5; color: #29231f; font: 600 13px/1 Arial, sans-serif; display: grid; place-items: center; flex-shrink: 0; }
+
+/* Column 3: Total */
+.totalCol { display: grid; gap: 4px; }
+.totalLabel { font: 400 12px/1.2 Arial, sans-serif; color: #817970; }
+.totalAmount { font: 700 17px/1.2 Arial, sans-serif; color: #29231f; }
+
+/* Column 4: Status */
+.statusCol { display: grid; gap: 6px; }
+.badgeDelivered, .badgeShipped, .badgePending, .badgeDefault { display: inline-flex; align-items: center; gap: 6px; width: fit-content; padding: 4px 12px; border-radius: 999px; font: 600 12.5px/1 Arial, sans-serif; }
+.badgeDelivered { background: #eaf5e9; color: #2e6b34; }
+.badgeShipped { background: #fcefe4; color: #a35d29; }
+.badgePending { background: #f2ece6; color: #6a5a4e; }
+.badgeDefault { background: #f0eae4; color: #554c46; }
+.badgeIcon { width: 14px; height: 14px; stroke-width: 1.6; flex-shrink: 0; }
+.statusSubtext { font: 400 12px/1.3 Arial, sans-serif; color: #817970; }
+
+/* Column 5: Action Button */
+.actionCol { text-align: right; }
+.btnPrimary, .btnSecondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 10px; font: 500 14px/1 Arial, sans-serif; cursor: pointer; transition: background-color var(--motion-feedback) ease, border-color var(--motion-feedback) ease, color var(--motion-feedback) ease, opacity var(--motion-feedback) var(--motion-ease-enter); }
+.btnPrimary { border: 0; background: #68452f; color: #ffffff; }
+@media (hover: hover) and (pointer: fine) {
+.btnPrimary:hover { background: #533624; } }
+.btnSecondary { border: 1.5px solid #29231f; background: #ffffff; color: #29231f; }
+@media (hover: hover) and (pointer: fine) {
+.btnSecondary:hover { background: #faf5ef; } }
+.btnPrimary svg, .btnSecondary svg { width: 16px; height: 16px; stroke-width: 1.45; }
+
+/* Drawer for expanded order details */
+.detailsDrawer { border-top: 1px solid #eae1d7; background: #faf6f1; padding: 20px 24px; animation: none; }
+.detailsGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.detailsRecipient h4, .detailsItems h4 { margin: 0 0 8px; font: 600 14px/1.2 Arial, sans-serif; color: #29231f; }
+.detailsRecipient p { margin: 0 0 4px; font: 400 13.5px/1.5 Arial, sans-serif; color: #6a5a4e; }
+.detailsItems ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.detailsItems li { display: flex; justify-content: space-between; font: 400 13px/1.4 Arial, sans-serif; color: #6a5a4e; }
+.discountRow { margin: 8px 0 0; font: 600 13px/1.4 Arial, sans-serif; color: #2e6b34; }
+
+/* Pagination */
+.pagination { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 32px; }
+.pageArrow, .pageNum, .pageNumActive { width: 38px; height: 38px; border-radius: 10px; font: 500 14px/1 Arial, sans-serif; display: grid; place-items: center; cursor: pointer; transition: background-color var(--motion-feedback) ease, border-color var(--motion-feedback) ease, color var(--motion-feedback) ease, opacity var(--motion-feedback) var(--motion-ease-enter); }
+.pageArrow { border: 1px solid #eae1d7; background: #faf5ef; color: #29231f; }
+@media (hover: hover) and (pointer: fine) {
+.pageArrow:hover:not(:disabled) { background: #efe3d7; } }
+.pageArrow:disabled { opacity: 0.35; cursor: not-allowed; }
+.pageArrow svg { width: 16px; height: 16px; }
+.pageNum { border: 1px solid #eae1d7; background: #faf5ef; color: #29231f; }
+@media (hover: hover) and (pointer: fine) {
+.pageNum:hover { background: #efe3d7; } }
+.pageNumActive { border: 0; background: #68452f; color: #ffffff; font-weight: 600; }
+
+/* Responsive */
+@media (max-width: 1180px) {
+  .cardMain { grid-template-columns: 140px 130px 130px 180px minmax(0, 1fr); gap: 14px; padding: 18px 20px; }
+}
+
+@media (max-width: 960px) {
+  .cardMain { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .infoCol { grid-column: span 1; }
+  .thumbsCol { grid-column: span 1; justify-content: flex-end; }
+  .totalCol { grid-column: span 1; }
+  .statusCol { grid-column: span 1; text-align: right; }
+  .statusCol .badgeDelivered, .statusCol .badgeShipped, .statusCol .badgePending, .statusCol .badgeDefault { margin-left: auto; }
+  .actionCol { grid-column: span 2; text-align: left; margin-top: 8px; }
+  .actionCol .btnPrimary, .actionCol .btnSecondary { width: 100%; }
+  .detailsGrid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+@media (max-width: 640px) {
+  .cardMain { grid-template-columns: 1fr; gap: 12px; padding: 16px; }
+  .thumbsCol { justify-content: flex-start; }
+  .statusCol { text-align: left; }
+  .statusCol .badgeDelivered, .statusCol .badgeShipped, .statusCol .badgePending, .statusCol .badgeDefault { margin-left: 0; }
+  .actionCol { grid-column: span 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab, .tabActive, .btnPrimary, .btnSecondary, .pageArrow, .pageNum, .orderCard { transition: none; }
+  .detailsDrawer { animation: none; }
+}
+
+
+@media (pointer: coarse) { .pageArrow, .pageNum, .pageNumActive { width: 44px; height: 44px; } }

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Desktop: mở sản phẩm từ cuối danh mục",
+    "pass": true
+  },
+  {
+    "name": "Sản phẩm liên quan từ PDP đang cuộn xuống",
+    "pass": true
+  },
+  {
+    "name": "Click khi animation wheel Lenis còn chạy",
+    "pass": true
+  },
+  {
+    "name": "Mobile: mở sản phẩm về đầu trang",
+    "pass": true
+  },
+  {
+    "name": "Reduced motion: không Lenis vẫn về đầu",
+    "pass": true
+  },
+  {
+    "name": "Back giữ vị trí danh mục; Forward giữ vị trí PDP",
+    "pass": true
+  }
+]

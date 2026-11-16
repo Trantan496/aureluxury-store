@@ -1,0 +1,32 @@
+[
+  {
+    "name": "desktop",
+    "pass": true
+  },
+  {
+    "name": "mobile",
+    "pass": true
+  },
+  {
+    "name": "resend-success",
+    "pass": false,
+    "error": "The expression evaluated to a falsy value:\n\n  assert.ok(send[0].body.callbackURL.endsWith('/verify-email'))\n"
+  },
+  {
+    "name": "resend-error",
+    "pass": true
+  },
+  {
+    "name": "signup-error",
+    "pass": false,
+    "error": "locator.waitFor: Error: strict mode violation: getByRole('alert') resolved to 2 elements:\n    1) <div role=\"alert\" tabindex=\"-1\" class=\"login_error___hUG2\">Chưa thể tạo tài khoản. Hãy kiểm tra thông tin ho…</div> aka getByText('Chưa thể tạo tài khoản. Hãy')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div> aka locator('[id=\"__next-route-announcer__\"]')\n\nCall log:\n\u001b[2m  - waiting for getByRole('alert') to be visible\u001b[22m\n"
+  },
+  {
+    "name": "login-link",
+    "pass": true
+  },
+  {
+    "name": "email-unavailable",
+    "pass": true
+  }
+]

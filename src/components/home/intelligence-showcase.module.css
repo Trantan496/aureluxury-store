@@ -1,0 +1,124 @@
+.section {
+  --showcase-espresso: #352a25;
+  --showcase-champagne: #dec5a2;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 84% 35%, rgb(170 125 80 / 18%), transparent 42%),
+    linear-gradient(118deg, #211714 0%, var(--showcase-espresso) 52%, #2a1d18 100%);
+  color: var(--background);
+  padding: clamp(44px, 6vw, 100px) clamp(20px, 5vw, 88px);
+}
+
+.section::before,
+.section::after {
+  position: absolute;
+  z-index: -1;
+  width: clamp(580px, 74vw, 1450px);
+  aspect-ratio: 1;
+  border: 1px solid rgb(232 207 171 / 66%);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.section::before { top: clamp(-590px, -35vw, -250px); left: clamp(-510px, -27vw, -160px); }
+.section::after { right: clamp(-590px, -35vw, -250px); bottom: clamp(-690px, -41vw, -330px); }
+
+.composition {
+  display: grid;
+  grid-template-columns: minmax(0, 61fr) minmax(300px, 39fr);
+  gap: clamp(34px, 5vw, 96px);
+  align-items: center;
+  max-width: 1800px;
+  margin-inline: auto;
+}
+
+.media {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 1.62 / 1;
+  overflow: hidden;
+  border: 1px solid rgb(222 197 162 / 58%);
+  border-radius: clamp(14px, 1.3vw, 24px);
+  box-shadow: 0 28px 55px rgb(0 0 0 / 28%);
+}
+
+.image { object-fit: cover; background: var(--showcase-espresso); }
+.content { min-width: 0; padding-block: clamp(8px, 2vw, 40px); text-align: left; container-type: inline-size; font-family: Arial, Helvetica, sans-serif; }
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--showcase-champagne);
+  font-size: clamp(10px, 2.4cqi, 12px);
+  letter-spacing: .22em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+.eyebrow::before { content: ""; flex: 0 0 32px; height: 1px; background: var(--showcase-champagne); opacity: .65; }
+.heading {
+  margin-top: clamp(24px, 3vw, 48px);
+  font-family: var(--font-storefront-serif), "Times New Roman", Georgia, serif;
+  font-size: clamp(38px, 7.4cqi, 84px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.04em;
+  color: #f6f0e7;
+}
+.headingAccent { display: inline-block; margin-top: .18em; color: var(--showcase-champagne); font-style: italic; }
+.headingEmphasis { font-weight: 400; }
+.description { max-width: 32ch; margin-top: clamp(22px, 3vw, 34px); color: #e7dbce; font-size: clamp(14px, 2.65cqi, 18px); font-weight: 400; line-height: 1.8; }
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(28px, 4vw, 64px);
+  max-width: 100%;
+  min-height: 60px;
+  margin-top: clamp(28px, 3.5vw, 48px);
+  padding: 16px 26px 16px 34px;
+  width: fit-content;
+  border-radius: 9999px;
+  border: 1px solid #f1dfc0;
+  background: #f1dfc0;
+  color: #2b201b;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: .04em;
+  transition: background-color var(--motion-feedback) ease, border-color var(--motion-feedback) ease, color var(--motion-feedback) ease;
+}
+.cta svg { flex: 0 0 18px; width: 18px; height: 18px; color: currentColor; transition: transform var(--motion-feedback) var(--motion-ease-enter); }
+.cta:focus-visible { outline: 2px solid var(--background); outline-offset: 5px; }
+@media (hover: hover) and (pointer: fine) {
+  .cta:hover { background: #fff4df; border-color: #fff4df; color: #2b201b; }
+  .cta:hover svg { transform: translateX(3px); }
+}
+@media (min-width: 768px) and (max-width: 1100px) {
+  .composition { gap: 34px; }
+  .heading { margin-top: 20px; }
+  .description { margin-top: 18px; font-size: 13px; }
+  .cta { min-height: 50px; margin-top: 22px; gap: 18px; padding: 12px 20px 12px 24px; }
+}
+@media (max-width: 767px) {
+  .section { padding-block: 50px 60px; }
+  .composition { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .media { aspect-ratio: 1.28 / 1; }
+  .heading { margin-top: 18px; }
+  .description { margin-top: 18px; }
+  .cta { min-height: 54px; margin-top: 26px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .composition { transition: opacity var(--motion-reveal) var(--motion-ease-enter), transform var(--motion-reveal) var(--motion-ease-enter); }
+  .section[data-reveal="pending"] .composition { opacity: 0; transform: translateY(14px); }
+  .section:focus-within .composition { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta, .cta svg { transition: none; }
+  @media (hover: hover) and (pointer: fine) {
+  .cta:hover svg { transform: none; }
+  }
+  .section .composition { opacity: 1; transform: none; }
+}

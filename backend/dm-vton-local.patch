@@ -1,0 +1,26 @@
+diff --git a/models/common/correlation.py b/models/common/correlation.py
+index f74351b..752b39c 100644
+--- a/models/common/correlation.py
++++ b/models/common/correlation.py
+@@ -292,7 +292,7 @@ def cupy_kernel(strFunction, objVariables):
+ 
+ @cupy.memoize(for_each_device=True)
+ def cupy_launch(strFunction, strKernel):
+-    return cupy.cuda.compile_with_cache(strKernel).get_function(strFunction)
++    return cupy.RawModule(code=strKernel).get_function(strFunction)
+ 
+ 
+ # end
+diff --git a/utils/torch_utils.py b/utils/torch_utils.py
+index 56660cc..66bf44a 100644
+--- a/utils/torch_utils.py
++++ b/utils/torch_utils.py
+@@ -38,7 +38,7 @@ def select_device(device='', batch_size=0):
+ 
+ 
+ def get_ckpt(ckpt_path):
+-    ckpt = torch.load(ckpt_path, map_location='cpu') if ckpt_path else None
++    ckpt = torch.load(ckpt_path, map_location='cpu', weights_only=False) if ckpt_path else None
+     return ckpt
+ 
+ 

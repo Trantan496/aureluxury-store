@@ -1,0 +1,501 @@
+/* Seller Inbox — AUREL Quiet Luxury Theme consistent with /messages & /admin */
+
+.page {
+  min-height: calc(100vh - 56px);
+  background: #f8f4ef;
+  color: #322720;
+  padding: 16px 20px 28px;
+  font-family: var(--font-storefront-sans), "Segoe UI", Arial, sans-serif;
+}
+
+.container {
+  width: min(1320px, 100%);
+  margin: 0 auto;
+}
+
+.portalWrap {
+  background: #fffdfb;
+  border: 1px solid #e6dacd;
+  padding: 10px 14px 2px;
+  border-radius: 16px;
+  margin-bottom: 14px;
+}
+
+.messengerShell {
+  height: min(680px, calc(100dvh - 160px));
+  min-height: 500px;
+  border: 1px solid #dfd3c6;
+  border-radius: 18px;
+  background: #fffdfb;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 18px 44px rgba(50, 39, 32, 0.08);
+}
+
+.messengerRail {
+  flex: 0 0 60px;
+  background: #f4ede4;
+  border-right: 1px solid #e5dad0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 6px;
+}
+
+.railGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.railBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #78675d;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--motion-feedback) ease, color var(--motion-feedback) ease, border-color var(--motion-feedback) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+.railBtn:hover {
+  background: #eae0d4;
+  color: #322720;
+}
+}
+
+.railBtnActive {
+  background: #fffdfb;
+  border-color: #dfd3c6;
+  color: #68452f;
+  box-shadow: 0 2px 8px rgba(50, 39, 32, 0.06);
+}
+
+.threadSidebar {
+  flex: 0 0 320px;
+  background: #fbf8f4;
+  border-right: 1px solid #e5dad0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sidebarHeader {
+  padding: 16px 16px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.sidebarHeader h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #322720;
+}
+
+.circleBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #dfd3c6;
+  background: #fffdfb;
+  color: #322720;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+.circleBtn:hover {
+  background: #f1e7dc;
+  border-color: #68452f;
+}
+}
+
+.searchWrap {
+  padding: 0 14px 12px;
+}
+
+.searchInput {
+  width: 100%;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid #e2d6c8;
+  background: #fffdfb;
+  color: #322720;
+  font-size: 13.5px;
+  outline: none;
+}
+
+.searchInput:focus {
+  border-color: #68452f;
+}
+
+.searchInput::placeholder {
+  color: #9b8b7f;
+}
+
+.threadListScroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2px 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.threadItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #322720;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--motion-feedback) ease, border-color var(--motion-feedback) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+.threadItem:hover {
+  background: #f2ebe2;
+}
+}
+
+.threadItemActive {
+  background: #fffdfb;
+  border-color: #e4d8cb;
+  box-shadow: 0 4px 12px rgba(50, 39, 32, 0.05);
+}
+
+.avatarCircle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: linear-gradient(145deg, #3a2b22, #68452f);
+  color: #fffdfb;
+  display: grid;
+  place-items: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.avatarCircleSm {
+  width: 34px;
+  height: 34px;
+  font-size: 12.5px;
+}
+
+.avatarCircleXs {
+  width: 28px;
+  height: 28px;
+  font-size: 11.5px;
+}
+
+.onlineDot {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #3d8b5e;
+  border: 2px solid #fbf8f4;
+}
+
+.onlineDotWaiting {
+  background: #c58b38;
+}
+
+.threadBody {
+  min-width: 0;
+  flex: 1;
+}
+
+.threadTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.threadName {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #322720;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.threadTime {
+  font-size: 11px;
+  color: #8b7a6e;
+  flex: 0 0 auto;
+}
+
+.threadBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 3px;
+}
+
+.threadPreview {
+  font-size: 12px;
+  color: #78675d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.unreadDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #68452f;
+  flex: 0 0 auto;
+}
+
+.chatPane {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fcf9f5;
+}
+
+.conversationHeader {
+  padding: 12px 18px;
+  background: #fffdfb;
+  border-bottom: 1px solid #e6dacd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.customerIdentity {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.customerIdentity h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #322720;
+}
+
+.customerIdentity p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #78675d;
+}
+
+.controlActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.controlBtn {
+  height: 32px;
+  padding: 0 13px;
+  border-radius: 999px;
+  border: 1px solid #d9cbbf;
+  background: #faf6f1;
+  color: #322720;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+.controlBtn:hover {
+  background: #efe5da;
+  border-color: #68452f;
+}
+}
+
+.messagesArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.msgBlock {
+  max-width: 78%;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.msgBlockCustomer {
+  align-self: flex-start;
+}
+
+.msgBlockShop {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.msgContentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.msgSender {
+  font-size: 11px;
+  color: #83736a;
+  margin: 0 6px;
+}
+
+.msgBlockShop .msgSender {
+  text-align: right;
+}
+
+.msgBubble {
+  padding: 10px 15px;
+  border-radius: 18px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.msgBubbleCustomer {
+  background: #fffdfb;
+  border: 1px solid #e5dad0;
+  color: #322720;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 8px rgba(50, 39, 32, 0.04);
+}
+
+.msgBubbleBot {
+  background: #efe5da;
+  border: 1px solid #e2d4c5;
+  color: #322720;
+  border-bottom-right-radius: 4px;
+}
+
+.msgBubbleStaff {
+  background: linear-gradient(135deg, #322720, #4d382b);
+  color: #fffdfb;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 3px 10px rgba(50, 39, 32, 0.12);
+}
+
+.replyForm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  background: #fffdfb;
+  border-top: 1px solid #e6dacd;
+}
+
+.replyInput {
+  flex: 1;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid #d9cbbf;
+  background: #faf7f3;
+  color: #322720;
+  font-size: 13.5px;
+  outline: none;
+}
+
+.replyInput:focus {
+  border-color: #68452f;
+  background: #fffdfb;
+}
+
+.replyInput::placeholder {
+  color: #9b8b7f;
+}
+
+.replySendBtn {
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 0;
+  background: #322720;
+  color: #fffdfb;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+.replySendBtn:hover:not(:disabled) {
+  background: #68452f;
+}
+}
+
+.replySendBtn:disabled {
+  background: #cfc2b5;
+  color: #fffdfb;
+  cursor: not-allowed;
+}
+
+.emptyState {
+  margin: auto;
+  padding: 28px;
+  text-align: center;
+  color: #78675d;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .messengerShell {
+    height: auto;
+    min-height: 540px;
+    flex-direction: column;
+  }
+  .messengerRail {
+    display: none;
+  }
+  .threadSidebar {
+    flex: none;
+    max-height: 240px;
+    border-right: 0;
+    border-bottom: 1px solid #e5dad0;
+  }
+  .chatPane {
+    min-height: 420px;
+  }
+}

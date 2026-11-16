@@ -1,0 +1,212 @@
+[
+  {
+    "productId": 91,
+    "imageId": 195,
+    "slot": 1,
+    "before": "/images/uploads/8b22a4b8-def0-4f1d-9bb6-f9d80525d19e.webp",
+    "after": "/images/uploads/5f889e62-f386-4279-bf8a-42c7f118bcaf.webp"
+  },
+  {
+    "productId": 91,
+    "imageId": 196,
+    "slot": 2,
+    "before": "/images/uploads/7ce10afa-649e-4ab1-86c0-bdfdb436e43b.webp",
+    "after": "/images/uploads/617dff75-4bd8-48d9-aa20-2a78e9ea056e.webp"
+  },
+  {
+    "productId": 91,
+    "imageId": 197,
+    "slot": 3,
+    "before": "/images/uploads/4d503edc-d208-42ca-8d11-fb5a2c7e81c2.webp",
+    "after": "/images/uploads/b5aec380-fd62-4e3a-8dff-6c5b16a70a92.webp"
+  },
+  {
+    "productId": 92,
+    "imageId": 199,
+    "slot": 1,
+    "before": "/images/uploads/2c0ec772-6675-4f1f-aea2-cf38eaa35d67.webp",
+    "after": "/images/uploads/3eb8864b-625d-4368-a8b7-070b0ae3d702.webp"
+  },
+  {
+    "productId": 92,
+    "imageId": 200,
+    "slot": 2,
+    "before": "/images/uploads/725c929a-f09d-4f40-a153-3c4a67277304.webp",
+    "after": "/images/uploads/60fd742b-4e77-4bed-81c5-b139c433ea77.webp"
+  },
+  {
+    "productId": 92,
+    "imageId": 201,
+    "slot": 3,
+    "before": "/images/uploads/d9cdcd14-1e97-4fb7-83af-d9ef307b29e7.webp",
+    "after": "/images/uploads/1c6866a1-cadc-402d-aede-5c8764617a24.webp"
+  },
+  {
+    "productId": 93,
+    "imageId": 203,
+    "slot": 1,
+    "before": "/images/uploads/642a91bf-b482-4029-bad3-7f4fae874a74.webp",
+    "after": "/images/uploads/73e97214-bf1c-4600-bfca-8e7efb37477b.webp"
+  },
+  {
+    "productId": 93,
+    "imageId": 204,
+    "slot": 2,
+    "before": "/images/uploads/9956de7e-928c-4e94-b2f3-329c3d99039b.webp",
+    "after": "/images/uploads/5e200e02-6543-4776-bd6c-0f186ae74b5e.webp"
+  },
+  {
+    "productId": 93,
+    "imageId": 205,
+    "slot": 3,
+    "before": "/images/uploads/0d3e77f6-e280-4e20-9f48-fa778a13faf6.webp",
+    "after": "/images/uploads/c85a3bee-05e0-4dc4-8833-bb7d3492563a.webp"
+  },
+  {
+    "productId": 94,
+    "imageId": 207,
+    "slot": 1,
+    "before": "/images/uploads/9194d5d5-c65d-46bf-bea6-0feeb5b4921b.webp",
+    "after": "/images/uploads/b69f4643-f190-40d7-b612-8504a5123106.webp"
+  },
+  {
+    "productId": 94,
+    "imageId": 208,
+    "slot": 2,
+    "before": "/images/uploads/cbf451b0-aa96-4b90-a982-f6adaa44eb8a.webp",
+    "after": "/images/uploads/f8791aee-89de-4c92-ada9-c5f203aff473.webp"
+  },
+  {
+    "productId": 94,
+    "imageId": 209,
+    "slot": 3,
+    "before": "/images/uploads/c560c1be-852d-416e-a4f7-3ca8846573ad.webp",
+    "after": "/images/uploads/d0766648-dfde-4745-8c50-c4ecdd9456fe.webp"
+  },
+  {
+    "productId": 96,
+    "imageId": 216,
+    "slot": 1,
+    "before": "/images/uploads/a653a780-5165-40b0-9b7d-c98a09466101.webp",
+    "after": "/images/uploads/c4576084-2968-499b-8591-e9d06dac354a.webp"
+  },
+  {
+    "productId": 96,
+    "imageId": 217,
+    "slot": 2,
+    "before": "/images/uploads/e45ae106-0096-43e0-8763-c9f2e34dd79f.webp",
+    "after": "/images/uploads/cb9344c2-0d87-4a0d-be34-aa11a1c22961.webp"
+  },
+  {
+    "productId": 96,
+    "imageId": 218,
+    "slot": 3,
+    "before": "/images/uploads/8a9dfb35-4841-45ae-84c2-0997b9445e16.webp",
+    "after": "/images/uploads/b5aec380-fd62-4e3a-8dff-6c5b16a70a92.webp"
+  },
+  {
+    "productId": 97,
+    "imageId": 220,
+    "slot": 1,
+    "before": "/images/uploads/ee0a2282-f93d-42e2-9f57-c38c61c13b52.webp",
+    "after": "/images/uploads/ab5f808b-594b-49d5-b75b-9c1efb3702d3.webp"
+  },
+  {
+    "productId": 97,
+    "imageId": 221,
+    "slot": 2,
+    "before": "/images/uploads/9b1cc435-0bd4-4660-952a-7f08b180c0bf.webp",
+    "after": "/images/uploads/7da42ab7-066c-49f4-be50-38379d2ee2b0.webp"
+  },
+  {
+    "productId": 97,
+    "imageId": 222,
+    "slot": 3,
+    "before": "/images/uploads/204728e6-6434-45b4-885e-82f808bd42d2.webp",
+    "after": "/images/uploads/8d2c3239-09c3-4da8-9689-611c74601558.webp"
+  },
+  {
+    "productId": 98,
+    "imageId": 224,
+    "slot": 1,
+    "before": "/images/uploads/81a65cb2-be09-4f28-97a7-cf4a3643a2db.webp",
+    "after": "/images/uploads/37b6af31-7eca-4bb0-8793-4bb4077e109a.webp"
+  },
+  {
+    "productId": 98,
+    "imageId": 225,
+    "slot": 2,
+    "before": "/images/uploads/43df5505-bdd7-4f9d-975b-155f74948d42.webp",
+    "after": "/images/uploads/2a2f6ad3-f9d8-45e4-82c1-31b666604b98.webp"
+  },
+  {
+    "productId": 98,
+    "imageId": 226,
+    "slot": 3,
+    "before": "/images/uploads/79cb282b-2e45-482b-b0bf-4c4f1e17ce8d.webp",
+    "after": "/images/uploads/59f1d04d-3bd3-4aea-99a2-ab62c2ef8c93.webp"
+  },
+  {
+    "productId": 100,
+    "imageId": 231,
+    "slot": 1,
+    "before": "/images/uploads/7a092efd-aa23-4be6-8b28-096f94fb916e.webp",
+    "after": "/images/uploads/882737a3-e1de-46cf-af05-315bfbd46657.webp"
+  },
+  {
+    "productId": 100,
+    "imageId": 232,
+    "slot": 2,
+    "before": "/images/uploads/4cb6ccf5-3e63-4055-b4e4-7f9fcdee4c1f.webp",
+    "after": "/images/uploads/06327e95-557c-48bf-88a1-26266ae0a3dd.webp"
+  },
+  {
+    "productId": 100,
+    "imageId": 233,
+    "slot": 3,
+    "before": "/images/uploads/f6ecf93e-2917-422a-90df-3a43dfe19530.webp",
+    "after": "/images/uploads/c7ef38aa-8d46-4e8f-8e57-9c4ba59268fb.webp"
+  },
+  {
+    "productId": 101,
+    "imageId": 237,
+    "slot": 1,
+    "before": "/images/uploads/c41b076b-f2b8-42cd-a70f-e1b59a98557d.webp",
+    "after": "/images/uploads/df9d38c5-f9dc-497d-9721-1e43672ef768.webp"
+  },
+  {
+    "productId": 101,
+    "imageId": 238,
+    "slot": 2,
+    "before": "/images/uploads/ccf61d57-4c87-468f-a499-5ac838bb2452.webp",
+    "after": "/images/uploads/2b7dff35-17fe-4e83-b2db-970f866886b2.webp"
+  },
+  {
+    "productId": 101,
+    "imageId": 239,
+    "slot": 3,
+    "before": "/images/uploads/61334892-df69-4688-9cc3-b75223da70ad.webp",
+    "after": "/images/uploads/d5567bfd-945c-4738-b071-5501b32ee622.webp"
+  },
+  {
+    "productId": 102,
+    "imageId": 241,
+    "slot": 1,
+    "before": "/images/uploads/2d1946cc-8711-4410-a7f6-40a6e94e404a.webp",
+    "after": "/images/uploads/2a43ec37-47ec-41c6-9292-542aeafb8a10.webp"
+  },
+  {
+    "productId": 102,
+    "imageId": 242,
+    "slot": 2,
+    "before": "/images/uploads/0fb7c651-cfc1-43da-b214-18047ed5fe0f.webp",
+    "after": "/images/uploads/8ceaeb23-2009-4757-a39c-f048df7632ae.webp"
+  },
+  {
+    "productId": 102,
+    "imageId": 243,
+    "slot": 3,
+    "before": "/images/uploads/8202b671-50cc-4d54-aa41-002ab55644c8.webp",
+    "after": "/images/uploads/8c469a02-d7f3-4590-a00e-036b25edb7ee.webp"
+  }
+]

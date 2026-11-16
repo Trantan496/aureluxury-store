@@ -1,0 +1,85 @@
+.ordersPage {
+  --seller-bg: #f5efe8;
+  --seller-surface: #fdfaf7;
+  --seller-border: #eee5dc;
+  --seller-espresso: #30251f;
+}
+
+.ordersPage > div { max-width: 1740px; padding: 24px 28px 64px; }
+.ordersPage nav[aria-label="Quản lý cửa hàng"] {
+  border-radius: 28px; padding: 10px 20px; margin-bottom: 28px;
+  box-shadow: 0 10px 30px #67462b0a;
+}
+.ordersPage nav[aria-label="Quản lý cửa hàng"] a { min-height: 48px; font-size: 15px; }
+.ordersPage nav[aria-label="Quản lý cửa hàng"] a[aria-current] {
+  background: linear-gradient(120deg, #75462c, #402619); border-radius: 16px;
+}
+.ordersPage header {
+  min-height: 228px; padding: 30px 46px; border-radius: 30px;
+  align-items: center; margin-bottom: 32px;
+  background: linear-gradient(90deg, #fcf8f2 0%, #fcf8f2f5 36%, #fcf8f25c 68%, #e9d9c969),
+    url('/images/aurel/account-editorial-still-life.png') right 60% / 620px auto no-repeat #eadaca;
+  box-shadow: 0 12px 32px #67462b08;
+}
+.ordersPage header h1 { font-size: clamp(34px, 3.5vw, 56px); margin: 18px 0; color: #281c15; }
+.ordersPage header p { max-width: 710px; font-size: 16px; color: #655a51; }
+.ordersPage header > div:last-child { flex-wrap: wrap; justify-content: flex-end; }
+.ordersPage header a, .ordersPage header button { min-height: 48px; border-radius: 16px; font-size: 14px; }
+.ordersPage nav[aria-label="Lọc đơn hàng"] { gap: 20px; margin-bottom: 28px; }
+.ordersPage nav[aria-label="Lọc đơn hàng"] > button { min-height: 158px; border-radius: 28px; padding: 24px 28px; gap: 16px; }
+.ordersPage nav[aria-label="Lọc đơn hàng"] > button[aria-pressed="true"] {
+  background: linear-gradient(115deg, #643b24ef, #321e16f5), url('/images/aurel/admin-card-bg.webp') center / cover;
+  border-color: #b28d6d; box-shadow: 0 10px 20px #643b2420;
+}
+.ordersPage nav[aria-label="Lọc đơn hàng"] > button > div:first-child { justify-content: flex-start; }
+.ordersPage nav[aria-label="Lọc đơn hàng"] > button > div:first-child > span:first-child {
+  width: 46px; height: 46px; border-radius: 50%; background: #f1e3d5;
+}
+.ordersPage nav[aria-label="Lọc đơn hàng"] > button[aria-pressed="true"] > div:first-child > span:first-child { background: #ffffff20; }
+.ordersPage nav[aria-label="Lọc đơn hàng"] svg { width: 24px; height: 24px; }
+.ordersPage nav[aria-label="Lọc đơn hàng"] > button > div:first-child > span:nth-child(2) { font-size: 17px; }
+.ordersPage nav[aria-label="Lọc đơn hàng"] strong { font-size: 42px; }
+.ordersPage nav[aria-label="Lọc đơn hàng"] > button > div:last-child > span { font-size: 14px; }
+.cardArrow { margin-left: auto; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: #ffffff15; font-size: 26px; }
+.ordersPage section[aria-label="Bảng quản lý đơn hàng"] { border-radius: 30px; margin-top: 24px; box-shadow: 0 16px 34px #67462b09; }
+.ordersPage section[aria-label="Bảng quản lý đơn hàng"] > div:first-child { padding: 22px 30px; background: #fdfaf7; }
+.ordersPage section[aria-label="Bảng quản lý đơn hàng"] > div:first-child strong { font-size: 23px; }
+.ordersPage input[type="search"] { min-height: 50px; border-radius: 16px; padding-left: 44px; border-color: #eee5dc; }
+.searchIcon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.searchIcon svg { width: 21px; height: 21px; }
+.ordersPage table { min-width: 1180px; }
+.ordersPage th { background: #f7f0e8; padding: 18px 22px; letter-spacing: .035em; }
+.ordersPage td { padding: 24px 22px; }
+.ordersPage td:first-child { position: relative; }
+.ordersPage td:first-child::before { content: ''; position: absolute; left: 14px; top: 25px; bottom: 25px; width: 3px; border-radius: 8px; background: #c99c64; }
+.ordersPage td:first-child > * { margin-left: 8px; }
+.ordersPage td:nth-child(3) li { border: 0; background: transparent; padding: 0; display: flex; align-items: flex-start; gap: 12px; }
+.thumbnail { position: relative; display: grid; place-items: center; flex: 0 0 64px; width: 64px; height: 76px; border-radius: 13px; overflow: hidden; background: #f2e8de; color: #91755b; }
+.thumbnail img { object-fit: cover; }
+.thumbnail svg { width: 26px; height: 26px; }
+.itemCopy { flex: 1; min-width: 0; }
+.ordersPage td:nth-child(4) > strong { font-size: 20px; }
+.ordersPage td:nth-child(5) > span { display: inline-flex; align-items: center; gap: 7px; background: #f6e8da; color: #87502c; border-radius: 30px; }
+.ordersPage td:nth-child(5) svg { width: 15px; height: 15px; }
+.ordersPage td:last-child button, .ordersPage td:last-child a { border-radius: 13px; min-height: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.ordersPage td:last-child button { background: linear-gradient(115deg, #714126, #432617); }
+.ordersPage td:last-child button:last-of-type:not(:first-child) { background: #fff1ed; color: #b13e2e; border-color: #efcec5; }
+.customerIcon { display: inline-flex; align-self: center; }
+@media (max-width: 1200px) {
+  .ordersPage header { padding: 28px; flex-wrap: wrap; }
+  .ordersPage header > div:last-child { justify-content: flex-start; }
+}
+@media (max-width: 760px) {
+  .ordersPage > div { padding: 16px 14px 40px; }
+  .ordersPage header { padding: 24px; gap: 20px; background-position: center, right 60%; background-size: auto, 360px auto; }
+  .ordersPage header p { font-size: 14px; }
+  .ordersPage header > div:last-child { width: 100%; }
+  .ordersPage header a, .ordersPage header button { font-size: 12px; padding: 10px; }
+  .ordersPage nav[aria-label="Lọc đơn hàng"] { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .ordersPage nav[aria-label="Lọc đơn hàng"] > button { min-height: 150px; padding: 16px; border-radius: 20px; }
+  .ordersPage nav[aria-label="Lọc đơn hàng"] > button > div:first-child { gap: 8px; flex-wrap: wrap; }
+  .ordersPage nav[aria-label="Lọc đơn hàng"] > button > div:first-child > span:nth-child(2) { font-size: 14px; }
+  .ordersPage nav[aria-label="Lọc đơn hàng"] > button > div:last-child > span { font-size: 12px; }
+  .cardArrow { display: none; }
+  .ordersPage section[aria-label="Bảng quản lý đơn hàng"] > div:first-child { padding: 20px; }
+}
