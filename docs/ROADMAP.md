@@ -1,8 +1,15 @@
 # Lộ trình — Fashion Store
 
+## Voucher & Chuyển hướng thẳng payOS khi thanh toán — 16/11/2026
+- [x] Khởi tạo 2 voucher thật trong PostgreSQL (`AUREL50K` giảm 50.000đ và `AUREL15` giảm 15% tối đa 250.000đ) và thử nghiệm áp mã tạo link payOS thật.
+- [x] Chỉnh `CheckoutView`, `ShopClient` và `PayosPayment` tự động chuyển hướng sang `https://pay.payos.vn/...` ngay sau khi tạo đơn `PAYOS` (không hiển thị QR/thông tin ngân hàng bên mình).
+- [x] Khi thanh toán thành công trên payOS, `returnUrl` (`/checkout/success?order=...`) tự động đón về, xóa phiên chờ cũ trong `sessionStorage`, đối chiếu trạng thái `PAID` và hiển thị xác nhận đơn hàng.
+- [ ] Nghiệm thu chuyển khoản thật trên `https://aureluxury.store/checkout` bằng trình duyệt với một trong 2 mã `AUREL50K` / `AUREL15`.
+
 ## Lưu source GitHub — 16/11/2026
 - [x] Khởi tạo Git, loại dữ liệu runtime/secrets, cấu hình Git LFS và submodule AI.
 - [x] Bảo toàn thay đổi DM-VTON bằng patch; bổ sung hướng dẫn clone.
+- [x] Push nhánh `main` và video LFS lên repository riêng tư `Trantan496/aureluxury-store`.
 - [ ] Cấu hình môi trường/DB/model riêng khi triển khai từ bản clone trên máy mới.
 
 ## Hoàn thiện Virtual Try-On cho quần (`lower`) & túi (`bag`) — 15/11/2026

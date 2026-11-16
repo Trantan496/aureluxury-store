@@ -1,11 +1,20 @@
 # Trạng thái dự án — Fashion Store
 
+## Tạo 2 voucher thật & Chuyển hướng thẳng sang cổng payOS khi thanh toán — 16/11/2026
+- **Tạo 2 voucher hoạt động trong PostgreSQL** (xác nhận qua `/admin/vouchers` và checkout thật):
+  - `AUREL50K`: giảm cố định `50.000 VND`, đơn tối thiểu `200.000 VND`, `usageLimit: 500`, `perUserLimit: 10`, hiệu lực `2026-11-01`–`2027-12-31`.
+  - `AUREL15`: giảm `15%` (tối đa `250.000 VND`), đơn tối thiểu `300.000 VND`, `usageLimit: 500`, `perUserLimit: 10`, hiệu lực `2026-11-01`–`2027-12-31`.
+- **Chuyển hướng thẳng sang trang thanh toán payOS (`https://pay.payos.vn/...`) và quay lại `/checkout/success` khi thành công**:
+  - `src/features/payments/rules.ts`: Bổ sung helper `payosRedirectUrl(payment)` kiểm tra trạng thái pending, không cần đối soát và xác thực URL `https://pay.payos.vn` qua `hostedCheckout()`.
+  - `src/components/shop/checkout-view.tsx` & `src/components/shop/shop-client.tsx`: Sau khi tạo đơn `PAYOS`, gọi ngay `paymentRequest(orderId, "create")` để lấy `checkoutUrl` và chuyển hướng trình duyệt trực tiếp qua `window.location.assign(targetUrl)` thay vì mở modal VietQR trên site; chỉ hiển thị fallback `<PayosPayment>` nếu bước tạo phiên payOS bị lỗi.
+  - `src/components/shop/payos-payment.tsx`: Tự động chuyển hướng khi `autoCreate && !returnMode`, xóa khóa `aurel-payos-order` trong `sessionStorage` khi quay về `/checkout/success` hoặc `/checkout/cancel` hay đã `PAID`, mở link cùng tab và giảm chu kỳ reconcile ở `/checkout/success` xuống `32s`.
+
 ## Lưu mã nguồn GitHub — 16/11/2026
 - Khởi tạo Git nhánh `main`; đích lưu mã nguồn riêng tư: `Trantan496/aureluxury-store`. Đây là lưu source, không triển khai hosting.
 - `.gitignore` loại secrets, DB/runtime, uploads, môi trường Python và trọng số AI. README đã thay giá trị trùng secret cục bộ bằng placeholder. Video lớn dùng Git LFS.
 - CatVTON và DM-VTON là submodule upstream; thay đổi cục bộ DM-VTON lưu trong `backend/dm-vton-local.patch`. Khi clone xem hướng dẫn README.
 - Kiểm tra source staged không phát hiện giá trị secret đã đối chiếu; không chạy lại app test vì không đổi logic. Whitespace cũ còn tồn tại; không sửa lan rộng.
-- Bước tiếp: xác minh commit `main` trên GitHub; khi cài máy mới cần cấu hình env, DB và tải model riêng.
+- Initial commit `489e0e9` đã push thành công lên GitHub, LFS 1/1 object hoàn tất. Thay đổi checkout xuất hiện sau commit được giữ riêng trong working tree; khi cài máy mới cần cấu hình env, DB và tải model riêng.
 
 ## Hoàn thiện Virtual Try-On cho quần (`lower`) & túi xách (`bag`) — 15/11/2026
 - **Khắc phục thử quần (`cloth_type = "lower"`) trong `backend/tryon-service/app.py`**:
